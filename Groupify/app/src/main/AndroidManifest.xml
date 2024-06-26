@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Groupify"
         tools:targetApi="31">
+
+        <activity android:name=".ColorClassify"></activity>
+        <activity android:name=".FunctionClassify"></activity>
+        <activity android:name=".DeployActivity"></activity>
+        <activity android:name=".SelectionActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

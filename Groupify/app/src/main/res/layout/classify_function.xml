@@ -6,15 +6,9 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewFunctionClassify"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello~"
+        android:text="기능분류 화면입니다"
         android:textSize="24sp" />
-
-    <Button
-        android:id="@+id/button_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next" />
 </LinearLayout>
