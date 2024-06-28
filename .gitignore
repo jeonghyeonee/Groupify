@@ -1,6 +1,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/kotlin,androidstudio,python,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=kotlin,androidstudio,python,windows
 
+### Large Data ###
+*.csv
+
 ### Kotlin ###
 # Compiled class file
 *.class
