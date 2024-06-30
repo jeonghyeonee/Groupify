@@ -10,19 +10,11 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/appContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <!-- 아이콘과 이름을 표시할 컨테이너 -->
-            <LinearLayout
-                android:id="@+id/appContainer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-            </LinearLayout>
-
         </LinearLayout>
-    </ScrollView>
 
+    </ScrollView>
 </LinearLayout>
