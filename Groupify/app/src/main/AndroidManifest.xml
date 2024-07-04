@@ -24,6 +24,10 @@
         <activity
             android:name=".DeployActivity"
             android:exported="true"></activity>
+
+        <activity
+            android:name=".ColorRange"
+            android:exported="true"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="true">

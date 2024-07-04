@@ -1,5 +1,6 @@
 package com.example.groupify
 
+import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -19,6 +20,8 @@ class ColorClassify : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.classify_color)
 
+        val colorCodes = arrayListOf<Int>()
+
         try {
             // PackageManager를 사용하여 설치된 앱 리스트를 가져옴
             val packageManager: PackageManager = packageManager
@@ -35,6 +38,7 @@ class ColorClassify : AppCompatActivity() {
 
                     // 아이콘의 대표 색상 추출
                     val dominantColor = getDominantColor(appIcon)
+                    colorCodes.add(dominantColor)
 
                     // 앱 이름과 대표 색상 코드를 표시할 TextView 생성
                     val textView = TextView(this)
@@ -48,6 +52,12 @@ class ColorClassify : AppCompatActivity() {
                     Log.d("AppInfo", "App Name: $appName, Dominant Color: #${Integer.toHexString(dominantColor)}")
                 }
             }
+
+            // ColorRange 액티비티로 대표 색상 코드 전달
+            val intent = Intent(this, ColorRange::class.java)
+            intent.putIntegerArrayListExtra("colorCodes", colorCodes)
+            startActivity(intent)
+
         } catch (e: Exception) {
             Log.e("AppInfo", "Error retrieving app information", e)
         }
