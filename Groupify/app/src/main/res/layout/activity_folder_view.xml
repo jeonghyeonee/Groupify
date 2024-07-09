@@ -4,12 +4,10 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/appContainer"
+        android:id="@+id/folderContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp">
-
-        <!-- 앱 정보를 표시할 컨테이너 -->
     </LinearLayout>
 </ScrollView>

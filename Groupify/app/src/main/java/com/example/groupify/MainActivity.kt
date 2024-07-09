@@ -1,5 +1,11 @@
 package com.example.groupify
 
+<<<<<<< HEAD
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+=======
 
 import android.content.Intent
 import android.widget.Button
@@ -10,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
+>>>>>>> 018250f72912b7519882555f90a44292bf0f650e
 import android.widget.LinearLayout
 import android.widget.TextView
 
@@ -22,12 +29,17 @@ class MainActivity : AppCompatActivity() {
         val textView: TextView = findViewById(R.id.textView)
         textView.text = "Hello~"
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 018250f72912b7519882555f90a44292bf0f650e
         // 버튼 설정
         val buttonNext = findViewById<Button>(R.id.button_next)
         buttonNext.setOnClickListener {
             val intent = Intent(this, DeployActivity::class.java)
             startActivity(intent)
+<<<<<<< HEAD
+=======
 
             // 앱 이름과 아이콘을 표시할 컨테이너
             val appContainer: LinearLayout = findViewById(R.id.appContainer)
@@ -61,6 +73,7 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.e("AppInfo", "Error retrieving app information", e)
 
+>>>>>>> 018250f72912b7519882555f90a44292bf0f650e
         }
     }
 }
