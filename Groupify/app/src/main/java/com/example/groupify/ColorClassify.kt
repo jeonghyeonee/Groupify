@@ -1,5 +1,6 @@
 package com.example.groupify
 
+import android.content.Intent
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -27,28 +28,20 @@ class ColorClassify : AppCompatActivity() {
 
         selectedColors = intent.getSerializableExtra("selectedColors") as List<Pair<String, Int>>
 
+        val colorGroups = HashMap<String, MutableList<Pair<String, Int>>>()
+
         try {
-            // PackageManager를 사용하여 설치된 앱 리스트를 가져옴
             val packageManager: PackageManager = packageManager
             val packages: List<PackageInfo> = packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
-
-            // 앱 정보를 표시할 LinearLayout
             val appContainer: LinearLayout = findViewById(R.id.appContainer)
 
-            // 색상 그룹을 저장할 맵
-            val colorGroups = HashMap<String, MutableList<Pair<String, Int>>>()
-
             for (packageInfo in packages) {
-                // 구글 플레이 스토어에서 설치된 앱만 필터링
                 if (packageManager.getInstallerPackageName(packageInfo.packageName) == "com.android.vending") {
                     val appName = packageInfo.applicationInfo.loadLabel(packageManager).toString()
                     val appIcon = packageInfo.applicationInfo.loadIcon(packageManager)
-
-                    // 아이콘의 대표 색상 추출
                     val dominantColor = getDominantColor(appIcon)
                     val groupName = getClosestColorGroup(dominantColor, selectedColors)
 
-                    // 색상 그룹에 앱 이름과 대표 색상 추가
                     if (colorGroups.containsKey(groupName)) {
                         colorGroups[groupName]?.add(Pair(appName, dominantColor))
                     } else {
@@ -62,7 +55,6 @@ class ColorClassify : AppCompatActivity() {
                 val groupColor = selectedColors.find { it.first == groupName }?.second ?: Color.BLACK
                 val hexColor = String.format("#%06X", 0xFFFFFF and groupColor)
 
-                // 그룹 이름과 대표 색상 표시
                 val groupTextView = TextView(this)
                 groupTextView.text = "$groupName - Representative Color: $hexColor"
                 groupTextView.setPadding(10, 10, 10, 10)
@@ -70,7 +62,6 @@ class ColorClassify : AppCompatActivity() {
                 groupTextView.setTextColor(Color.WHITE)
                 appContainer.addView(groupTextView)
 
-                // 앱 이름들 표시
                 for ((appName, appColor) in apps) {
                     val appLayout = LinearLayout(this)
                     appLayout.orientation = LinearLayout.HORIZONTAL
@@ -90,6 +81,12 @@ class ColorClassify : AppCompatActivity() {
                 }
             }
 
+            // Intent to start FolderViewActivity with colorGroups
+            val intent = Intent(this, FolderViewActivity::class.java).apply {
+                putExtra("colorGroups", HashMap(colorGroups.mapValues { ArrayList(it.value) }))
+            }
+            startActivity(intent)
+
         } catch (e: Exception) {
             Log.e("AppInfo", "Error retrieving app information", e)
         }
@@ -98,7 +95,7 @@ class ColorClassify : AppCompatActivity() {
     private fun getDominantColor(drawable: Drawable): Int {
         val bitmap = drawableToBitmap(drawable)
         val palette = Palette.from(bitmap).generate()
-        return palette.getDominantColor(0x000000) // 기본값으로 검정색 반환
+        return palette.getDominantColor(0x000000)
     }
 
     private fun drawableToBitmap(drawable: Drawable): Bitmap {
