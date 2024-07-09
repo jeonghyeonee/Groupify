@@ -12,7 +12,7 @@ class SelectionActivity : AppCompatActivity() {
 
         val buttonColor = findViewById<Button>(R.id.button_color)
         buttonColor.setOnClickListener {
-            val intent = Intent(this, ColorClassify::class.java)
+            val intent = Intent(this, ColorSelectionActivity::class.java)
             startActivity(intent)
         }
 
