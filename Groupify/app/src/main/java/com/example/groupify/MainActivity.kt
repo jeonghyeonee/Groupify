@@ -1,5 +1,8 @@
 package com.example.groupify
 
+
+import android.content.Intent
+import android.widget.Button
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
 import android.graphics.drawable.Drawable
@@ -15,10 +18,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        try {
-            // PackageManager를 사용하여 설치된 앱 리스트를 가져옴
-            val packageManager: PackageManager = packageManager
-            val packages: List<PackageInfo> = packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
+        // "Hello~" 텍스트뷰 설정
+        val textView: TextView = findViewById(R.id.textView)
+        textView.text = "Hello~"
+
+
+        // 버튼 설정
+        val buttonNext = findViewById<Button>(R.id.button_next)
+        buttonNext.setOnClickListener {
+            val intent = Intent(this, DeployActivity::class.java)
+            startActivity(intent)
 
             // 앱 이름과 아이콘을 표시할 컨테이너
             val appContainer: LinearLayout = findViewById(R.id.appContainer)
@@ -51,6 +60,7 @@ class MainActivity : AppCompatActivity() {
             }
         } catch (e: Exception) {
             Log.e("AppInfo", "Error retrieving app information", e)
+
         }
     }
 }
