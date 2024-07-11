@@ -5,24 +5,13 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-<<<<<<< HEAD
-=======
-<!-- 일단 합쳐 놓음 -->
->>>>>>> 018250f72912b7519882555f90a44292bf0f650e
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello~"
         android:textSize="24sp" />
-<<<<<<< HEAD
 
-    <Button
-        android:id="@+id/button_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Next" />
-=======
 
     <Button
         android:id="@+id/button_next"
@@ -51,5 +40,4 @@
     </ScrollView>
 
 
->>>>>>> 018250f72912b7519882555f90a44292bf0f650e
 </LinearLayout>
