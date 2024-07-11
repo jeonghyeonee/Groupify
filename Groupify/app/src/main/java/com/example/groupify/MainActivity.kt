@@ -1,16 +1,19 @@
 package com.example.groupify
 
 import android.content.Intent
-import android.widget.Button
-import android.content.pm.PackageInfo
-import android.content.pm.PackageManager
-import android.graphics.drawable.Drawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +23,9 @@ class MainActivity : AppCompatActivity() {
         // "Hello~" 텍스트뷰 설정
         val textView: TextView = findViewById(R.id.textView)
         textView.text = "Hello~"
+
+        // Get All App Info
+        logInstalledApps()
 
         // 버튼 설정
         val buttonNext = findViewById<Button>(R.id.button_next)
@@ -31,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                 // 앱 이름과 아이콘을 표시할 컨테이너
                 val appContainer: LinearLayout = findViewById(R.id.appContainer)
                 val packageManager = packageManager
-                val packages: List<PackageInfo> = packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
+                val packages = packageManager.getInstalledPackages(0)
 
                 for (packageInfo in packages) {
                     // 구글 플레이 스토어에서 설치된 앱만 필터링
@@ -62,6 +68,58 @@ class MainActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Log.e("AppInfo", "Error retrieving app information", e)
             }
+        }
+    }
+
+    private fun logInstalledApps() {
+        val packageManager = packageManager
+        val packages = packageManager.getInstalledPackages(0)
+        val logStringBuilder = StringBuilder()
+
+        for (packageInfo in packages) {
+            val appName = packageInfo.applicationInfo.loadLabel(packageManager).toString()
+            val packageName = packageInfo.packageName
+            val versionName = packageInfo.versionName
+            val versionCode = packageInfo.longVersionCode
+
+            // 로그 문자열 생성
+            logStringBuilder.append("App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode\n")
+        }
+
+        // 로그 저장
+        saveLogcat(logStringBuilder.toString())
+    }
+
+    private fun saveLogcat(log: String) {
+        // 타임스탬프 생성
+        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+
+
+        // 로그 파일 경로 설정
+        val projectDir = BuildConfig.PROJECT_DIR
+        val logsDir = if (BuildConfig.IS_WINDOWS) {
+            File("$projectDir\\logs")
+        } else {
+            File("$projectDir/logs")
+        }
+
+        if (!logsDir.exists()) {
+            logsDir.mkdirs()
+        }
+
+        val logFile = if (BuildConfig.IS_WINDOWS) {
+            File("logsDir\\logcat_$timestamp.txt")
+        } else {
+            File(logsDir, "logcat_$timestamp.txt")
+        }
+
+        try {
+            FileOutputStream(logFile, true).use { output ->
+                output.write(log.toByteArray())
+            }
+            Log.d("saveLogcat", "Logcat saved to ${logFile.absolutePath}")
+        } catch (e: IOException) {
+            Log.e("saveLogcat", "Error saving logcat", e)
         }
     }
 }

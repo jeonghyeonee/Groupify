@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -15,6 +18,28 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // local.properties 파일에서 sdk.dir 값을 읽어와서 BuildConfig에 추가
+        val localProperties = File(rootDir, "local.properties")
+        if (localProperties.exists()) {
+            val properties = Properties()
+            properties.load(FileInputStream(localProperties))
+            val sdkDir = properties.getProperty("sdk.dir")
+            if (sdkDir != null) {
+                buildConfigField("String", "SDK_DIR", "\"${sdkDir.replace("\\", "\\\\")}\"")
+                println("SDK_DIR: ${sdkDir.replace("\\", "\\\\")}")
+            } else {
+                buildConfigField("String", "SDK_DIR", "\"\"")
+                println("SDK_DIR is null in local.properties")
+            }
+        } else {
+            buildConfigField("String", "SDK_DIR", "\"\"")
+            println("local.properties file not found")
+        }
+
+        val osName = System.getProperty("os.name").toLowerCase()
+        buildConfigField("Boolean", "IS_WINDOWS", "${osName.contains("win")}")
+        buildConfigField("String", "PROJECT_DIR", "\"${rootDir.absolutePath.replace("\\", "\\\\")}\"")
     }
 
     buildTypes {
@@ -33,15 +58,18 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        buildConfig = true
+    }
 }
 
 dependencies {
-
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.palette:palette-ktx:1.0.0")
+    implementation("org.jsoup:jsoup:1.13.1")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
