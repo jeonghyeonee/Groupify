@@ -1,13 +1,22 @@
 package com.example.groupify
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.os.Environment
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
@@ -16,16 +25,49 @@ import java.util.Date
 import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var storageRef: StorageReference
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        // Firebase Storage 초기화
+        val storage = FirebaseStorage.getInstance("gs://groupify-d9e65.appspot.com")
+        storageRef = storage.reference
 
         // "Hello~" 텍스트뷰 설정
         val textView: TextView = findViewById(R.id.textView)
         textView.text = "Hello~"
 
-        // Get All App Info
-        logInstalledApps()
+        // 모든 앱 로그 출력
+        val packageManager = packageManager
+        val packages = packageManager.getInstalledPackages(0)
+
+        for (packageInfo in packages) {
+            val appName = packageInfo.applicationInfo.loadLabel(packageManager).toString()
+            val packageName = packageInfo.packageName
+            val versionName = packageInfo.versionName
+            val versionCode = packageInfo.longVersionCode
+
+            // 로그 출력
+            Log.d("AllAppInfo", "App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode")
+        }
+
+        // 권한 확인 및 요청
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (!Environment.isExternalStorageManager()) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.MANAGE_EXTERNAL_STORAGE), 1)
+            } else {
+                logInstalledApps()
+            }
+        } else {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
+            } else {
+                logInstalledApps()
+            }
+        }
 
         // 버튼 설정
         val buttonNext = findViewById<Button>(R.id.button_next)
@@ -71,6 +113,20 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // 권한 요청 결과 처리
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1) {
+            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+                // 권한이 허용된 경우 로그를 저장
+                logInstalledApps()
+            } else {
+                // 권한이 거부된 경우
+                Log.e("Permission", "WRITE_EXTERNAL_STORAGE permission denied")
+            }
+        }
+    }
+
     private fun logInstalledApps() {
         val packageManager = packageManager
         val packages = packageManager.getInstalledPackages(0)
@@ -84,9 +140,12 @@ class MainActivity : AppCompatActivity() {
 
             // 로그 문자열 생성
             logStringBuilder.append("App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode\n")
+
+            // 로그 출력 (AllAppInfo 태그 사용)
+            Log.d("AllAppInfo", "App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode")
         }
 
-        // 로그 저장
+        // 로그 저장 및 Firebase에 업로드
         saveLogcat(logStringBuilder.toString())
     }
 
@@ -94,32 +153,36 @@ class MainActivity : AppCompatActivity() {
         // 타임스탬프 생성
         val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
 
-
         // 로그 파일 경로 설정
-        val projectDir = BuildConfig.PROJECT_DIR
-        val logsDir = if (BuildConfig.IS_WINDOWS) {
-            File("$projectDir\\logs")
-        } else {
-            File("$projectDir/logs")
-        }
-
-        if (!logsDir.exists()) {
+        val logsDir = getExternalFilesDir(null)
+        if (logsDir != null && !logsDir.exists()) {
             logsDir.mkdirs()
         }
 
-        val logFile = if (BuildConfig.IS_WINDOWS) {
-            File("logsDir\\logcat_$timestamp.txt")
-        } else {
-            File(logsDir, "logcat_$timestamp.txt")
-        }
+        val logFile = File(logsDir, "logcat_$timestamp.txt")
 
         try {
             FileOutputStream(logFile, true).use { output ->
                 output.write(log.toByteArray())
             }
             Log.d("saveLogcat", "Logcat saved to ${logFile.absolutePath}")
+
+            // Firebase에 로그 파일 업로드
+            uploadLogToFirebase(logFile)
         } catch (e: IOException) {
             Log.e("saveLogcat", "Error saving logcat", e)
+        }
+    }
+
+    private fun uploadLogToFirebase(logFile: File) {
+        val fileUri = Uri.fromFile(logFile)
+        val storageRef = storageRef.child("logs/${logFile.name}")
+        val uploadTask = storageRef.putFile(fileUri)
+
+        uploadTask.addOnSuccessListener {
+            Log.d("Firebase", "Log uploaded successfully: ${logFile.name}")
+        }.addOnFailureListener { exception ->
+            Log.e("Firebase", "Failed to upload log", exception)
         }
     }
 }
