@@ -1,160 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
-    <LinearLayout
+    <EditText
+        android:id="@+id/editTextColorCount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:hint="Enter number of colors to classify" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Color Range"
-            android:textSize="18sp"
-            android:layout_marginBottom="16dp" />
+    <Button
+        android:id="@+id/buttonConfirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CONFIRM" />
 
-        <TextView
-            android:id="@+id/min_color_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Min Color Code: #000000"
-            android:textSize="16sp"
-            android:layout_marginBottom="16dp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <SeekBar
-                android:id="@+id/seekbar1"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="127" />
-
-            <TextView
-                android:id="@+id/color_text_view1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Boundary 1: #FF0000"
-                android:textSize="16sp"
-                android:layout_marginStart="16dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <SeekBar
-                android:id="@+id/seekbar2"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="128" />
-
-            <TextView
-                android:id="@+id/color_text_view2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Boundary 2: #FF7F00"
-                android:textSize="16sp"
-                android:layout_marginStart="16dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <SeekBar
-                android:id="@+id/seekbar3"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="127" />
-
-            <TextView
-                android:id="@+id/color_text_view3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Boundary 3: #FFFF00"
-                android:textSize="16sp"
-                android:layout_marginStart="16dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <SeekBar
-                android:id="@+id/seekbar4"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="127" />
-
-            <TextView
-                android:id="@+id/color_text_view4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Boundary 4: #00FF00"
-                android:textSize="16sp"
-                android:layout_marginStart="16dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
-
-            <SeekBar
-                android:id="@+id/seekbar5"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:max="128" />
-
-            <TextView
-                android:id="@+id/color_text_view5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Boundary 5: #007FFF"
-                android:textSize="16sp"
-                android:layout_marginStart="16dp" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/color_text_view6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Boundary 6: #000000"
-            android:textSize="16sp"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
-            android:id="@+id/max_color_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Max Color Code: #FFFFFF"
-            android:textSize="16sp"
-            android:layout_marginBottom="16dp" />
-
-        <View
-            android:id="@+id/color_preview"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginTop="16dp"
-            android:background="#000000" />
-    </LinearLayout>
-</ScrollView>
+    <TextView
+        android:id="@+id/warningTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#FF0000"
+        android:visibility="gone" />
+</LinearLayout>

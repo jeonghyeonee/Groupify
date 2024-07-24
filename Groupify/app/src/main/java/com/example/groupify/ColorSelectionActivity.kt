@@ -44,7 +44,7 @@ class ColorSelectionActivity : AppCompatActivity() {
                         setBackgroundColor(color)
                     } else {
                         selectedColors.add(name to color)
-                        setBackgroundColor(Color.GRAY) // 선택된 색상은 회색으로 표시
+                        setBackgroundResource(R.drawable.selected_button_background)
                     }
                 }
             }

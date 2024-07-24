@@ -11,13 +11,11 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.palette.graphics.Palette
 import kotlin.math.sqrt
 
+//색상 정해진 것중에 선택해서 분류
 class ColorClassify : AppCompatActivity() {
 
     private lateinit var selectedColors: List<Pair<String, Int>>
@@ -33,7 +31,6 @@ class ColorClassify : AppCompatActivity() {
         try {
             val packageManager: PackageManager = packageManager
             val packages: List<PackageInfo> = packageManager.getInstalledPackages(PackageManager.GET_META_DATA)
-            val appContainer: LinearLayout = findViewById(R.id.appContainer)
 
             for (packageInfo in packages) {
                 if (packageManager.getInstallerPackageName(packageInfo.packageName) == "com.android.vending") {
@@ -47,37 +44,6 @@ class ColorClassify : AppCompatActivity() {
                     } else {
                         colorGroups[groupName] = mutableListOf(Pair(appName, dominantColor))
                     }
-                }
-            }
-
-            // 그룹별 대표 색상과 앱 이름 표시
-            for ((groupName, apps) in colorGroups) {
-                val groupColor = selectedColors.find { it.first == groupName }?.second ?: Color.BLACK
-                val hexColor = String.format("#%06X", 0xFFFFFF and groupColor)
-
-                val groupTextView = TextView(this)
-                groupTextView.text = "$groupName - Representative Color: $hexColor"
-                groupTextView.setPadding(10, 10, 10, 10)
-                groupTextView.setBackgroundColor(groupColor)
-                groupTextView.setTextColor(Color.WHITE)
-                appContainer.addView(groupTextView)
-
-                for ((appName, appColor) in apps) {
-                    val appLayout = LinearLayout(this)
-                    appLayout.orientation = LinearLayout.HORIZONTAL
-                    appLayout.setPadding(20, 5, 20, 5)
-
-                    val appTextView = TextView(this)
-                    appTextView.text = "$appName (Group: $groupName)"
-                    appTextView.setPadding(10, 0, 10, 0)
-
-                    val colorImageView = ImageView(this)
-                    colorImageView.layoutParams = LinearLayout.LayoutParams(50, 50)
-                    colorImageView.setBackgroundColor(appColor)
-
-                    appLayout.addView(appTextView)
-                    appLayout.addView(colorImageView)
-                    appContainer.addView(appLayout)
                 }
             }
 
