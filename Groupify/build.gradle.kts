@@ -38,4 +38,3 @@ tasks.register("saveLogcat") {
         }
     }
 }
-
