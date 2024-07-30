@@ -21,10 +21,11 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         // local.properties 파일에서 sdk.dir 값을 읽어와서 BuildConfig에 추가
-        val localProperties = File(rootDir, "local.properties")
-        if (localProperties.exists()) {
-            val properties = Properties()
-            properties.load(FileInputStream(localProperties))
+        val localPropertiesFile = File(rootDir, "local.properties")
+        if (localPropertiesFile.exists()) {
+            val properties = Properties().apply {
+                load(FileInputStream(localPropertiesFile))
+            }
             val sdkDir = properties.getProperty("sdk.dir")
             if (sdkDir != null) {
                 buildConfigField("String", "SDK_DIR", "\"${sdkDir.replace("\\", "\\\\")}\"")
@@ -79,8 +80,10 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
     implementation("com.google.firebase:firebase-analytics:22.0.2")
     implementation("com.google.firebase:firebase-storage:21.0.0")
+
     implementation("com.google.firebase:firebase-firestore-ktx:25.0.0")
     implementation("com.google.firebase:firebase-storage-ktx:21.0.0")
 
     implementation(kotlin("script-runtime"))
+
 }
