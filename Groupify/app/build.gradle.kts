@@ -80,4 +80,5 @@ dependencies {
     implementation("com.google.firebase:firebase-analytics:22.0.2")
     implementation("com.google.firebase:firebase-storage:21.0.0")
     implementation("com.google.firebase:firebase-firestore:25.0.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
 }
