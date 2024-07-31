@@ -44,12 +44,14 @@ class DeployActivity : AppCompatActivity() {
         for (i in 0 until rows) {
             for (j in 0 until columns) {
                 val textView = TextView(this).apply {
-
                     setPadding(16, 16, 16, 16)
+                    text = "$i,$j"  // 그리드 항목에 텍스트 추가
                     setBackgroundResource(android.R.drawable.btn_default)
                     layoutParams = GridLayout.LayoutParams().apply {
-                        width = GridLayout.LayoutParams.WRAP_CONTENT
-                        height = GridLayout.LayoutParams.WRAP_CONTENT
+                        width = 0
+                        height = 0
+                        rowSpec = GridLayout.spec(i, 1, 1f)
+                        columnSpec = GridLayout.spec(j, 1, 1f)
                         setMargins(8, 8, 8, 8)
                     }
                 }
