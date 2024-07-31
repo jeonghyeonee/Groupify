@@ -1,14 +1,14 @@
 package com.example.groupify
 
-import android.graphics.Bitmap
+import android.content.Intent
 import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
@@ -25,6 +25,9 @@ import kotlin.random.Random
 class ColorRangeActivity : AppCompatActivity() {
     private lateinit var linearLayout: LinearLayout
     private lateinit var editText: EditText
+    private lateinit var buttonNext: Button
+
+    private var colorGroups: HashMap<Int, ArrayList<AppData>> = HashMap()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +35,8 @@ class ColorRangeActivity : AppCompatActivity() {
 
         linearLayout = findViewById(R.id.linearLayout)
         editText = findViewById(R.id.editText)
+        buttonNext = findViewById(R.id.button_next)
+        buttonNext.visibility = Button.GONE
 
         val buttonCluster = findViewById<Button>(R.id.button_cluster)
         buttonCluster.setOnClickListener {
@@ -42,6 +47,12 @@ class ColorRangeActivity : AppCompatActivity() {
             } else {
                 Log.e("ColorRangeActivity", "유효한 클러스터 수 (K)를 입력하세요.")
             }
+        }
+
+        buttonNext.setOnClickListener {
+            val intent = Intent(this, FolderViewActivity::class.java)
+            intent.putExtra("colorGroups", colorGroups)
+            startActivity(intent)
         }
     }
 
@@ -77,6 +88,10 @@ class ColorRangeActivity : AppCompatActivity() {
 
                 val clusters = kMeansClustering(allColors, k)
                 Log.d("ColorRangeActivity", "클러스터링 완료, 클러스터 수: ${clusters.size}")
+
+                colorGroups = HashMap(clusters.withIndex().map { (index, cluster) ->
+                    index to ArrayList(appDataList.filter { it.dominantColors in cluster })
+                }.toMap())
 
                 withContext(Dispatchers.Main) {
                     linearLayout.removeAllViews()
@@ -127,6 +142,7 @@ class ColorRangeActivity : AppCompatActivity() {
                         linearLayout.addView(clusterLayout)
                     }
                     Log.d("ColorRangeActivity", "결과 UI에 반영됨")
+                    buttonNext.visibility = Button.VISIBLE
                 }
             } catch (e: Exception) {
                 Log.e("ColorRangeActivity", "Exception in performClustering", e)
