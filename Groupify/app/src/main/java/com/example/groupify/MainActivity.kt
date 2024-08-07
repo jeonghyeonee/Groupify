@@ -1,14 +1,8 @@
 package com.example.groupify
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
-import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -22,23 +16,17 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.palette.graphics.Palette
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.io.ObjectOutputStream
-import java.io.Serializable
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
-data class AppData(val name: String, val iconFileName: String, val dominantColors: IntArray) : Serializable
-
 class MainActivity : AppCompatActivity() {
     private lateinit var storageRef: StorageReference
-    private val appDataList = mutableListOf<AppData>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -60,9 +48,7 @@ class MainActivity : AppCompatActivity() {
         buttonNext.setOnClickListener {
             val intent = Intent(this, DeployActivity::class.java)
             startActivity(intent)
-            downloadLogcatFile("logcat_all_apps")
         }
-
     }
 
     private fun checkAndRequestPermissions() {
@@ -129,9 +115,11 @@ class MainActivity : AppCompatActivity() {
         val packageManager = packageManager
         val packages = packageManager.getInstalledPackages(0)
         val logStringBuilder = StringBuilder()
+        val googlePlayLogStringBuilder = StringBuilder()
 
         // 앱 이름과 아이콘을 표시할 컨테이너
         val appContainer: LinearLayout = findViewById(R.id.appContainer)
+
 
         for (packageInfo in packages) {
             val appName = packageInfo.applicationInfo.loadLabel(packageManager).toString()
@@ -147,6 +135,9 @@ class MainActivity : AppCompatActivity() {
 
             // 구글 플레이 스토어에서 설치된 앱만 필터링
             if (packageManager.getInstallerPackageName(packageInfo.packageName) == "com.android.vending") {
+                // 구글 플레이 스토어에서 설치된 앱의 로그 문자열 생성
+//                googlePlayLogStringBuilder.append("App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode\n")
+                val appName = packageInfo.applicationInfo.loadLabel(packageManager).toString()
                 val appIcon = packageInfo.applicationInfo.loadIcon(packageManager)
 
                 // 로그 출력
@@ -167,85 +158,18 @@ class MainActivity : AppCompatActivity() {
                 appLayout.addView(textView)
 
                 appContainer.addView(appLayout)
-
-                // 아이콘 저장 및 대표 색상 추출
-                val bitmap = drawableToBitmap(appIcon)
-                val iconFileName = saveAppIcon(appName, bitmap)
-                val dominantColors = extractDominantColors(bitmap)
-
-                // AppData 목록에 추가
-                appDataList.add(AppData(appName, iconFileName, dominantColors))
             }
         }
 
         // 모든 앱 로그 저장 및 Firebase에 업로드
         saveLogcat(logStringBuilder.toString(), "logcat_all_apps")
-
-        // AppData를 파일로 저장
-        saveAppDataToFile()
-    }
-
-    private fun saveAppIcon(appName: String, bitmap: Bitmap): String {
-        val appDir = File(getExternalFilesDir(null), "AppIcons")
-        if (!appDir.exists()) {
-            appDir.mkdirs()
-        }
-
-        val iconFileName = "$appName.png"
-        val iconFile = File(appDir, iconFileName)
-        try {
-            FileOutputStream(iconFile).use { output ->
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, output)
-            }
-        } catch (e: IOException) {
-            Log.e("SaveAppIcon", "Error saving app icon", e)
-        }
-        return iconFileName
-    }
-
-    //아이콘 대표 색상 추출
-    private fun extractDominantColors(bitmap: Bitmap): IntArray {
-        val palette = Palette.from(bitmap).generate()
-        val dominantSwatch = palette.dominantSwatch
-        return if (dominantSwatch != null) {
-            intArrayOf(dominantSwatch.rgb)
-        } else {
-            intArrayOf(0)
-        }
-    }
-
-    private fun saveAppDataToFile() {
-        val dataFile = File(getExternalFilesDir(null), "AppData.dat")
-        try {
-            ObjectOutputStream(FileOutputStream(dataFile)).use { output ->
-                output.writeObject(appDataList)
-            }
-            Log.d("SaveAppData", "AppData saved to ${dataFile.absolutePath}")
-        } catch (e: IOException) {
-            Log.e("SaveAppData", "Error saving AppData", e)
-        }
-    }
-
-    private fun drawableToBitmap(drawable: Drawable): Bitmap {
-        if (drawable is BitmapDrawable) {
-            return drawable.bitmap
-        }
-        val bitmap = if (drawable.intrinsicWidth <= 0 || drawable.intrinsicHeight <= 0) {
-            Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
-        } else {
-            Bitmap.createBitmap(drawable.intrinsicWidth, drawable.intrinsicHeight, Bitmap.Config.ARGB_8888)
-        }
-
-        val canvas = Canvas(bitmap)
-        drawable.setBounds(0, 0, canvas.width, canvas.height)
-        drawable.draw(canvas)
-        return bitmap
+        // 구글 플레이 스토어에서 설치된 앱 로그 저장 및 Firebase에 업로드
+//        saveLogcat(googlePlayLogStringBuilder.toString(), "logcat_google_play_apps")
     }
 
     private fun saveLogcat(log: String, fileName: String) {
-        // 디바이스 ID로 파일 이름 생성
-        val deviceId = getDeviceId(this)
-        val finalFileName = "${deviceId}_$fileName.txt"
+        // 타임스탬프 생성
+        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
 
         // 로그 파일 경로 설정
         val logsDir = getExternalFilesDir(null)
@@ -253,7 +177,7 @@ class MainActivity : AppCompatActivity() {
             logsDir.mkdirs()
         }
 
-        val logFile = File(logsDir, finalFileName)
+        val logFile = File(logsDir, "${fileName}_$timestamp.txt")
 
         try {
             FileOutputStream(logFile, true).use { output ->
@@ -279,21 +203,6 @@ class MainActivity : AppCompatActivity() {
             Log.e("Firebase", "Failed to upload log", exception)
         }
     }
-
-    private fun downloadLogcatFile(fileName: String) {
-        val deviceId = getDeviceId(this)
-        val finalFileName = "${deviceId}_$fileName.txt"
-        val localFile = File(getExternalFilesDir(null), finalFileName)
-
-        val storageReference = storageRef.child("logs/$finalFileName")
-        storageReference.getFile(localFile).addOnSuccessListener {
-            Log.d("Firebase", "Log file downloaded successfully: ${localFile.absolutePath}")
-        }.addOnFailureListener { exception ->
-            Log.e("Firebase", "Failed to download log file", exception)
-        }
-    }
-
-    private fun getDeviceId(context: Context): String {
-        return Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID)
-    }
 }
+
+
