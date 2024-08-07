@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         buttonNext.setOnClickListener {
             val intent = Intent(this, DeployActivity::class.java)
             startActivity(intent)
-            downloadLogcatFile()
+            downloadLogcatFile("logcat_all_apps")
         }
 
     }
@@ -129,7 +129,6 @@ class MainActivity : AppCompatActivity() {
         val packageManager = packageManager
         val packages = packageManager.getInstalledPackages(0)
         val logStringBuilder = StringBuilder()
-        val googlePlayLogStringBuilder = StringBuilder()
 
         // 앱 이름과 아이콘을 표시할 컨테이너
         val appContainer: LinearLayout = findViewById(R.id.appContainer)
@@ -148,8 +147,6 @@ class MainActivity : AppCompatActivity() {
 
             // 구글 플레이 스토어에서 설치된 앱만 필터링
             if (packageManager.getInstallerPackageName(packageInfo.packageName) == "com.android.vending") {
-                // 구글 플레이 스토어에서 설치된 앱의 로그 문자열 생성
-//                googlePlayLogStringBuilder.append("App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode\n")
                 val appIcon = packageInfo.applicationInfo.loadIcon(packageManager)
 
                 // 로그 출력
@@ -248,7 +245,7 @@ class MainActivity : AppCompatActivity() {
     private fun saveLogcat(log: String, fileName: String) {
         // 디바이스 ID로 파일 이름 생성
         val deviceId = getDeviceId(this)
-        val finalFileName = "$deviceId-$fileName"
+        val finalFileName = "${deviceId}_$fileName.txt"
 
         // 로그 파일 경로 설정
         val logsDir = getExternalFilesDir(null)
@@ -256,8 +253,7 @@ class MainActivity : AppCompatActivity() {
             logsDir.mkdirs()
         }
 
-        val logFile = File(logsDir, "$finalFileName.txt")
-        Log.d("saveLogcat", logFile.toString())
+        val logFile = File(logsDir, finalFileName)
 
         try {
             FileOutputStream(logFile, true).use { output ->
@@ -284,12 +280,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun downloadLogcatFile() {
+    private fun downloadLogcatFile(fileName: String) {
         val deviceId = getDeviceId(this)
-        val fileName = "${deviceId}_logcat_all_apps.txt"
-        val localFile = File(getExternalFilesDir(null), fileName)
+        val finalFileName = "${deviceId}_$fileName.txt"
+        val localFile = File(getExternalFilesDir(null), finalFileName)
 
-        val storageReference = storageRef.child("logs/$fileName")
+        val storageReference = storageRef.child("logs/$finalFileName")
         storageReference.getFile(localFile).addOnSuccessListener {
             Log.d("Firebase", "Log file downloaded successfully: ${localFile.absolutePath}")
         }.addOnFailureListener { exception ->
