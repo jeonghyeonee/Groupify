@@ -1,12 +1,18 @@
 {
-    "name": "jeleez",
-    "version": "1.0.0",
-    "main": "index.js",
-    "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "description": ""
-  }
+  "name": "groupify",
+  "version": "1.0.0",
+  "description": "_Enhance your phone usage experience_",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "csv-writer": "^1.6.0",
+    "google-play-scraper": "^10.0.0"
+  },
+  "devDependencies": {}
+}
