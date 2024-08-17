@@ -3,7 +3,6 @@ package com.example.groupify
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings.Secure
@@ -15,6 +14,14 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.palette.graphics.Palette
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.net.Uri
+import androidx.core.graphics.get
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.appcheck.FirebaseAppCheck
@@ -112,15 +119,23 @@ class MainActivity : AppCompatActivity() {
                 // 앱 아이콘 가져오기
                 val appIcon = appInfo.loadIcon(packageManager)
 
+                // 대표 색상 추출 (예외 처리 추가)
+                val dominantColorHex = try {
+                    getDominantColorHex(appIcon)
+                } catch (e: Exception) {
+                    Log.e("PaletteError", "Failed to get dominant color for $appName", e)
+                    "#000000" // 실패 시 기본 색상 반환
+                }
+
                 // 모든 앱의 로그 문자열 생성
-                logStringBuilder.append("App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode\n")
+                logStringBuilder.append("App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode, Dominant Color: $dominantColorHex\n")
 
                 // 로그 출력
-                Log.d("AllAppList", "App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode")
+                Log.d("AllAppList", "App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode, Dominant Color: $dominantColorHex")
 
                 // 동적으로 텍스트뷰와 이미지뷰 생성
                 val textView = TextView(this)
-                textView.text = appName
+                textView.text = "$appName\nColor: $dominantColorHex"
 
                 val imageView = ImageView(this)
                 imageView.setImageDrawable(appIcon)
@@ -173,4 +188,63 @@ class MainActivity : AppCompatActivity() {
             Log.e("Firebase", "Failed to upload log", exception)
         }
     }
+
+    // 앱 아이콘의 대표 색상 코드 추출
+    private fun getDominantColorHex(drawable: Drawable): String {
+        val bitmap = drawableToBitmap(drawable)
+
+        // 색상 빈도를 저장할 맵 초기화
+        val colorFrequencyMap: MutableMap<Int, Int> = HashMap()
+
+        for (x in 0 until bitmap.width) {
+            for (y in 0 until bitmap.height) {
+                val pixelColor = bitmap.getPixel(x, y)
+
+                // 완전히 투명한 픽셀 무시
+                if (Color.alpha(pixelColor) < 255) continue
+
+                // 거의 흰색이나 거의 검은색은 무시
+                if (isNearWhiteOrBlack(pixelColor)) continue
+
+                val colorCount = colorFrequencyMap[pixelColor] ?: 0
+                colorFrequencyMap[pixelColor] = colorCount + 1
+            }
+        }
+
+        // 가장 빈도가 높은 색상 선택
+        val dominantColor = colorFrequencyMap.maxByOrNull { it.value }?.key ?: Color.GRAY
+
+        // 헥사 코드로 변환
+        return String.format("#%06X", 0xFFFFFF and dominantColor)
+    }
+
+    private fun drawableToBitmap(drawable: Drawable): Bitmap {
+        if (drawable is BitmapDrawable) {
+            return drawable.bitmap
+        }
+
+        val width = drawable.intrinsicWidth.takeIf { it > 0 } ?: 1
+        val height = drawable.intrinsicHeight.takeIf { it > 0 } ?: 1
+        val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.width, canvas.height)
+        drawable.draw(canvas)
+        return bitmap
+    }
+
+    private fun isNearWhiteOrBlack(color: Int): Boolean {
+        val red = Color.red(color)
+        val green = Color.green(color)
+        val blue = Color.blue(color)
+        // 흰색이나 검은색 근처의 색상을 무시 (범위를 조정 가능)
+        val nearWhiteThreshold = 245
+        val nearBlackThreshold = 10
+        return (red > nearWhiteThreshold && green > nearWhiteThreshold && blue > nearWhiteThreshold) ||
+                (red < nearBlackThreshold && green < nearBlackThreshold && blue < nearBlackThreshold)
+    }
+
+
+
+
+
 }
