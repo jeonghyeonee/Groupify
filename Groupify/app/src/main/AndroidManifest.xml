@@ -2,9 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.groupify">
 
+    <!-- 파일 시스템 접근 권한 -->
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <!-- 특정 패키지에 대한 가시성 선언 -->
+    <queries>
+        <!-- Play Store에서 설치된 앱을 쿼리할 수 있도록 설정 -->
+        <package android:name="com.android.vending" />
+        <!-- 일반적으로 사용자에게 표시되는 모든 앱 쿼리 -->
+        <intent>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent>
+    </queries>
 
     <application
         android:allowBackup="true"
@@ -13,7 +25,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-
         android:hardwareAccelerated="true">
 
         <activity android:name=".MainActivity" android:exported="true">
@@ -22,27 +33,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SelectionActivity"
-            android:exported="true"></activity>
-        <activity
-            android:name=".DeployActivity"
-            android:exported="true"></activity>
 
-     
-        <activity
-            android:name=".ColorRangeActivity"
-            android:exported="true"></activity>
+        <activity android:name=".SelectionActivity" android:exported="true" />
+        <activity android:name=".DeployActivity" android:exported="true" />
+        <activity android:name=".ColorRangeActivity" android:exported="true" />
+        <activity android:name=".FunctionClassify" android:exported="true" />
 
-   
-
-
-        <activity
-            android:name=".FunctionClassify"
-            android:exported="true"></activity>
     </application>
-
-
-      
-
 </manifest>
