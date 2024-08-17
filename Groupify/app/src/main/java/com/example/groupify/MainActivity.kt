@@ -8,6 +8,7 @@ import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.Settings
+import android.provider.Settings.Secure
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
@@ -18,15 +19,24 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.google.firebase.appcheck.FirebaseAppCheck
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import androidx.palette.graphics.Palette
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var storageRef: StorageReference
+    private lateinit var deviceId: String
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +45,16 @@ class MainActivity : AppCompatActivity() {
         // Firebase Storage 초기화
         val storage = FirebaseStorage.getInstance()
         storageRef = storage.reference
+
+        // Firebase App Check 초기화
+        val firebaseAppCheck = FirebaseAppCheck.getInstance()
+        firebaseAppCheck.installAppCheckProviderFactory(
+            PlayIntegrityAppCheckProviderFactory.getInstance()
+        )
+
+        // 기기의 ANDROID_ID 가져오기
+        deviceId = Secure.getString(contentResolver, Secure.ANDROID_ID)
+
 
         // "Hello~" 텍스트뷰 설정
         val textView: TextView = findViewById(R.id.textView)
@@ -113,74 +133,66 @@ class MainActivity : AppCompatActivity() {
     private fun logInstalledApps() {
         Log.d("LogApps", "Logging installed apps")
         val packageManager = packageManager
-        val packages = packageManager.getInstalledPackages(0)
+
+        // 홈 화면에 표시되는 앱을 필터링하는 인텐트
+        val mainIntent = Intent(Intent.ACTION_MAIN, null)
+        mainIntent.addCategory(Intent.CATEGORY_LAUNCHER)
+
+        // 런처가 설정된 모든 앱을 가져옴
+        val packages = packageManager.queryIntentActivities(mainIntent, 0)
         val logStringBuilder = StringBuilder()
-        val googlePlayLogStringBuilder = StringBuilder()
 
         // 앱 이름과 아이콘을 표시할 컨테이너
         val appContainer: LinearLayout = findViewById(R.id.appContainer)
 
+        for (resolveInfo in packages) {
+            val appName = resolveInfo.loadLabel(packageManager).toString()
+            val packageName = resolveInfo.activityInfo.packageName
+            val versionName = packageManager.getPackageInfo(packageName, 0).versionName
+            val versionCode = packageManager.getPackageInfo(packageName, 0).longVersionCode
 
-        for (packageInfo in packages) {
-            val appName = packageInfo.applicationInfo.loadLabel(packageManager).toString()
-            val packageName = packageInfo.packageName
-            val versionName = packageInfo.versionName
-            val versionCode = packageInfo.longVersionCode
+            // 앱 아이콘 가져오기
+            val appIcon = resolveInfo.loadIcon(packageManager)
 
             // 모든 앱의 로그 문자열 생성
             logStringBuilder.append("App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode\n")
 
-            // 모든 앱 로그 출력 (AllAppList 태그 사용)
+            // 모든 앱 로그 출력
             Log.d("AllAppList", "App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode")
 
-            // 구글 플레이 스토어에서 설치된 앱만 필터링
-            if (packageManager.getInstallerPackageName(packageInfo.packageName) == "com.android.vending") {
-                // 구글 플레이 스토어에서 설치된 앱의 로그 문자열 생성
-//                googlePlayLogStringBuilder.append("App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode\n")
-                val appName = packageInfo.applicationInfo.loadLabel(packageManager).toString()
-                val appIcon = packageInfo.applicationInfo.loadIcon(packageManager)
+            // 동적으로 텍스트뷰와 이미지뷰 생성
+            val textView = TextView(this)
+            textView.text = appName
 
-                // 로그 출력
-                Log.d("AppInfo", "App Name: $appName")
+            val imageView = ImageView(this)
+            imageView.setImageDrawable(appIcon)
+            imageView.layoutParams = LinearLayout.LayoutParams(100, 100) // 아이콘 크기 설정
 
-                // 동적으로 텍스트뷰와 이미지뷰 생성
-                val textView = TextView(this)
-                textView.text = appName
+            // 컨테이너에 추가
+            val appLayout = LinearLayout(this)
+            appLayout.orientation = LinearLayout.HORIZONTAL
+            appLayout.addView(imageView)
+            appLayout.addView(textView)
 
-                val imageView = ImageView(this)
-                imageView.setImageDrawable(appIcon)
-                imageView.layoutParams = LinearLayout.LayoutParams(100, 100) // 아이콘 크기 설정
-
-                // 컨테이너에 추가
-                val appLayout = LinearLayout(this)
-                appLayout.orientation = LinearLayout.HORIZONTAL
-                appLayout.addView(imageView)
-                appLayout.addView(textView)
-
-                appContainer.addView(appLayout)
-            }
+            appContainer.addView(appLayout)
         }
 
         // 모든 앱 로그 저장 및 Firebase에 업로드
-        saveLogcat(logStringBuilder.toString(), "logcat_all_apps")
-        // 구글 플레이 스토어에서 설치된 앱 로그 저장 및 Firebase에 업로드
-//        saveLogcat(googlePlayLogStringBuilder.toString(), "logcat_google_play_apps")
+        saveLogcat(logStringBuilder.toString(), "logcat_appicon_apps")
     }
 
-    private fun saveLogcat(log: String, fileName: String) {
-        // 타임스탬프 생성
-        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
 
+    private fun saveLogcat(log: String, fileName: String) {
         // 로그 파일 경로 설정
         val logsDir = getExternalFilesDir(null)
         if (logsDir != null && !logsDir.exists()) {
             logsDir.mkdirs()
         }
 
-        val logFile = File(logsDir, "${fileName}_$timestamp.txt")
+        val logFile = File(logsDir, "${fileName}_$deviceId.txt")
 
         try {
-            FileOutputStream(logFile, true).use { output ->
+            FileOutputStream(logFile, false).use { output ->
                 output.write(log.toByteArray())
             }
             Log.d("saveLogcat", "Logcat saved to ${logFile.absolutePath}")
@@ -191,6 +203,7 @@ class MainActivity : AppCompatActivity() {
             Log.e("saveLogcat", "Error saving logcat", e)
         }
     }
+
 
     private fun uploadLogToFirebase(logFile: File) {
         val fileUri = Uri.fromFile(logFile)
@@ -203,6 +216,8 @@ class MainActivity : AppCompatActivity() {
             Log.e("Firebase", "Failed to upload log", exception)
         }
     }
-}
 
+
+
+}
 
