@@ -1,5 +1,6 @@
 package com.example.groupify
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -20,7 +21,7 @@ class SelectionActivity : AppCompatActivity() {
 
         val buttonColorRange = findViewById<Button>(R.id.button_color_range)
         buttonColorRange.setOnClickListener {
-            val intent = Intent(this, ColorRangeActivity::class.java)
+            val intent = Intent(this, ClusteringActivity::class.java)
             startActivity(intent)
         }
     }

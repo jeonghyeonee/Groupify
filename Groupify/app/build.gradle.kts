@@ -67,7 +67,8 @@ android {
 
 dependencies {
 
-
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 
     // Import the BoM for the Firebase platform
     implementation(platform("com.google.firebase:firebase-bom:32.7.2"))
@@ -96,6 +97,7 @@ dependencies {
 
     implementation("com.google.firebase:firebase-firestore-ktx:25.0.0")
     implementation("com.google.firebase:firebase-storage-ktx:21.0.0")
+    implementation("com.google.code.gson:gson:2.8.8") // JSON 파싱을 위해
 
     implementation(kotlin("script-runtime"))
 
