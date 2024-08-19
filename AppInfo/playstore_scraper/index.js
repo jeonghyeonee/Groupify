@@ -18,7 +18,7 @@ const createCsvFile = async (collection, fileName) => {
   try {
     const apps = await gplay.list({
       collection: collection, // 지정된 컬렉션 사용
-      num: 10, // 가져올 앱의 수
+      num: 100, // 가져올 앱의 수
       lang: "ko", // 언어 (한국어로 설정)
       country: "kr", // 국가 코드 (한국)
     });
