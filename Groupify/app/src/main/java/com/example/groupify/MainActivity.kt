@@ -3,9 +3,16 @@ package com.example.groupify
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.provider.Settings.Secure
+import android.os.Environment
+import android.provider.Settings
 import android.util.Log
 import android.widget.Button
 import android.widget.ImageView
@@ -14,25 +21,20 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.palette.graphics.Palette
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
-import android.net.Uri
-import androidx.core.graphics.get
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.google.firebase.appcheck.FirebaseAppCheck
-import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
+import android.provider.Settings.Secure
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var storageRef: StorageReference
-    private lateinit var deviceId: String
+    private lateinit var deviceId: String  // 여기에 deviceId 선언
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,14 +44,28 @@ class MainActivity : AppCompatActivity() {
         val storage = FirebaseStorage.getInstance()
         storageRef = storage.reference
 
-        // Firebase App Check 초기화
-        val firebaseAppCheck = FirebaseAppCheck.getInstance()
-        firebaseAppCheck.installAppCheckProviderFactory(
-            PlayIntegrityAppCheckProviderFactory.getInstance()
-        )
+        // "Hello~" 텍스트뷰 설정
+        val textView: TextView = findViewById(R.id.textView)
+        textView.text = "Hello~"
 
         // 기기의 ANDROID_ID 가져오기
         deviceId = Secure.getString(contentResolver, Secure.ANDROID_ID)
+
+        FirebaseAuth.getInstance().currentUser?.getIdToken(true)
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val idToken = task.result?.token
+                    Log.d("FirebaseAuth", "Token refreshed successfully: $idToken")
+                    // Firebase 작업 수행
+                } else {
+                    Log.e("FirebaseAuth", "Token refresh failed", task.exception)
+                    // 실패 시 로그인 요청 또는 처리
+                }
+            }
+
+
+
+
 
         // 권한 확인 및 요청
         checkAndRequestPermissions()
@@ -63,35 +79,60 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkAndRequestPermissions() {
-        val permissions = arrayOf(
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        )
-
-        if (!hasPermissions(permissions)) {
-            ActivityCompat.requestPermissions(this, permissions, 1)
+        Log.d("PermissionCheck", "Checking permissions")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            Log.d("PermissionCheck", "Running on Android 11 or higher")
+            if (!Environment.isExternalStorageManager()) {
+                Log.d("PermissionCheck", "Requesting MANAGE_EXTERNAL_STORAGE permission")
+                val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
+                startActivityForResult(intent, 1)
+            } else {
+                Log.d("PermissionCheck", "MANAGE_EXTERNAL_STORAGE permission already granted")
+                logInstalledApps()
+            }
         } else {
-            logInstalledApps()
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+                ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                Log.d("PermissionCheck", "Requesting WRITE_EXTERNAL_STORAGE and READ_EXTERNAL_STORAGE permissions")
+                ActivityCompat.requestPermissions(this, arrayOf(
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+                ), 1)
+            } else {
+                Log.d("PermissionCheck", "WRITE_EXTERNAL_STORAGE and READ_EXTERNAL_STORAGE permissions already granted")
+                logInstalledApps()
+            }
         }
     }
 
-    private fun hasPermissions(permissions: Array<String>): Boolean {
-        return permissions.all {
-            ContextCompat.checkSelfPermission(this, it) == PackageManager.PERMISSION_GRANTED
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<String>,
-        grantResults: IntArray
-    ) {
+    // 권한 요청 결과 처리
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        Log.d("PermissionResult", "Request code: $requestCode, Permissions: ${permissions.joinToString()}, GrantResults: ${grantResults.joinToString()}")
         if (requestCode == 1) {
-            if (grantResults.all { it == PackageManager.PERMISSION_GRANTED }) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // 권한이 허용된 경우 로그를 저장
+                Log.d("PermissionResult", "WRITE_EXTERNAL_STORAGE permission granted")
                 logInstalledApps()
             } else {
-                Log.e("Permission", "Required permissions were not granted")
+                // 권한이 거부된 경우
+                Log.e("PermissionResult", "WRITE_EXTERNAL_STORAGE permission denied")
+            }
+        }
+    }
+
+    // Android 11 이상에서의 권한 결과 처리
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        Log.d("ActivityResult", "Request code: $requestCode, Result code: $resultCode")
+        if (requestCode == 1) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                if (Environment.isExternalStorageManager()) {
+                    Log.d("ActivityResult", "MANAGE_EXTERNAL_STORAGE permission granted")
+                    logInstalledApps()
+                } else {
+                    Log.e("ActivityResult", "MANAGE_EXTERNAL_STORAGE permission denied")
+                }
             }
         }
     }
@@ -152,9 +193,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 모든 앱 로그 저장 및 Firebase에 업로드
-        saveLogcat(logStringBuilder.toString(), "logcat_visible_apps")
+        saveLogcat(logStringBuilder.toString(), "logcat_SUA2_apps")
     }
-
     private fun saveLogcat(log: String, fileName: String) {
         // 로그 파일 경로 설정
         val logsDir = getExternalFilesDir(null)
@@ -243,8 +283,5 @@ class MainActivity : AppCompatActivity() {
                 (red < nearBlackThreshold && green < nearBlackThreshold && blue < nearBlackThreshold)
     }
 
-
-
-
-
 }
+
