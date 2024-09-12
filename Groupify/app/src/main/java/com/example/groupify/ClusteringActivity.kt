@@ -40,20 +40,28 @@ class ClusteringActivity : AppCompatActivity() {
         // '확인' 버튼을 누르면 LauncherActivity 호출
         confirmButton.setOnClickListener {
             Log.d("ClusteringActivity", "Confirm button clicked")
-            val intent = Intent(this, LauncherActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
 
+            // 클러스터링된 앱 목록을 Intent로 넘기기
+            val intent = Intent(this, LauncherActivity::class.java)
+
+            // 클러스터링된 앱 정보 전달 (앱 이름과 패키지 이름)
+            val clusteredApps = ArrayList<Pair<String, String>>()
+            for ((_, apps) in clusterMap) {
+                clusteredApps.addAll(apps)
+            }
+
+            // 앱 목록을 Intent로 전달
+            intent.putExtra("clusteredApps", clusteredApps)
+            startActivity(intent)
+            finish()  // ClusteringActivity 종료
+        }
     }
 
     private fun downloadAndParseFile() {
         val storageRef = FirebaseStorage.getInstance().reference.child("results/logcat_SUA2_apps_ee21702d85b4e078.txt")
 
-        // 디렉토리 경로를 설정합니다.
         val recentsDir = File(getExternalFilesDir(null), "Recents")
 
-        // 디렉토리가 없으면 생성
         if (!recentsDir.exists()) {
             if (recentsDir.mkdirs()) {
                 Log.d("ClusteringActivity", "Recents directory created successfully.")
@@ -64,18 +72,14 @@ class ClusteringActivity : AppCompatActivity() {
             Log.d("ClusteringActivity", "Recents directory already exists.")
         }
 
-        // Firebase Storage에서 파일 다운로드
         storageRef.getBytes(Long.MAX_VALUE).addOnSuccessListener { bytes ->
             val resultText = String(bytes)
 
-            // 다운로드된 데이터를 파일로 저장
             val file = File(recentsDir, "logcat_SUA2_apps.txt")
             file.writeText(resultText)
 
-            // 파일이 성공적으로 저장되었음을 로그로 확인
             Log.d("ClusteringActivity", "File saved at: ${file.absolutePath}")
 
-            // 파일 파싱 및 처리
             parseResultText(resultText)
         }.addOnFailureListener {
             Log.e("ClusteringActivity", "Failed to download file from Firebase", it)
@@ -100,7 +104,6 @@ class ClusteringActivity : AppCompatActivity() {
             }
         }
 
-        // UI에 클러스터링된 앱 표시
         displayClusteredApps(clusterMap)
     }
 

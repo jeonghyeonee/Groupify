@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager.widget.ViewPager
 import kotlin.math.ceil
@@ -21,28 +20,25 @@ class LauncherActivity : AppCompatActivity() {
         // 배경화면 설정
         setupBackground()
 
+        // 클러스터링된 앱 목록을 Intent로 전달받음
+        val clusteredApps = intent.getSerializableExtra("clusteredApps") as? ArrayList<Pair<String, String>>
+
         // ViewPager 설정
         val viewPager = findViewById<ViewPager>(R.id.viewPager)
-        val adapter = ViewPagerAdapter(supportFragmentManager, getAppPages())
-        viewPager.adapter = adapter
+        clusteredApps?.let {
+            val adapter = ViewPagerAdapter(supportFragmentManager, getAppPages(it))
+            viewPager.adapter = adapter
+        }
 
         // 하단 Dock 설정
         setupDock()
     }
 
     // 앱을 페이지로 나누는 함수
-    private fun getAppPages(): List<List<Pair<String, String>>> {
-        val packageManager = packageManager
-        val installedApps = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
-        val apps = installedApps.map {
-            val appName = it.loadLabel(packageManager).toString()
-            val packageName = it.packageName
-            Pair(appName, packageName)
-        }
-
+    private fun getAppPages(clusteredApps: ArrayList<Pair<String, String>>): List<List<Pair<String, String>>> {
         // 한 페이지당 20개씩 앱을 나눔 (4x5)
         val pageSize = 20
-        return apps.chunked(pageSize)
+        return clusteredApps.chunked(pageSize)
     }
 
     // 배경화면 설정 메서드
