@@ -16,21 +16,12 @@
         android:layout_gravity="center"
         android:paddingBottom="16dp" />
 
-    <!-- 앱 목록을 표시하는 ScrollView -->
-    <ScrollView
+    <!-- 앱 목록을 스와이프할 수 있는 ViewPager -->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <!-- ScrollView 내부에 GridLayout을 직접 배치 -->
-        <GridLayout
-            android:id="@+id/gridLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:columnCount="4"
-            android:orientation="horizontal"
-            android:padding="8dp" />
-    </ScrollView>
+        android:layout_weight="1" />
 
     <!-- 하단 Dock (자주 사용하는 앱 고정) -->
     <LinearLayout

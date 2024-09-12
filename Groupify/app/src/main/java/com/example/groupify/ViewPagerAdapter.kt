@@ -4,13 +4,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
-class ViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+class ViewPagerAdapter(fm: FragmentManager, private val pages: List<List<Pair<String, String>>>) :
+    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getCount(): Int {
-        return 3 // 총 3개의 페이지를 설정
+        return pages.size // 페이지 수 반환
     }
 
     override fun getItem(position: Int): Fragment {
-        return HomeScreenFragment.newInstance(position)
+        // 각 페이지에 해당하는 Fragment를 반환
+        return AppPageFragment.newInstance(pages[position])
     }
 }
