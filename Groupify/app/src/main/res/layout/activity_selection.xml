@@ -1,21 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
+    <!-- 폴더 개수를 입력할 수 있는 EditText -->
+    <EditText
+        android:id="@+id/editText_folder_count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="폴더 개수를 입력하세요"
+        android:inputType="number" />
 
-
+    <!-- 기능 분류 버튼 -->
     <Button
         android:id="@+id/button_function"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Function Classify" />
+        android:text="기능 분류로 이동" />
 
+    <!-- 색상 범위 버튼 -->
     <Button
         android:id="@+id/button_color_range"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Color Range" />
+        android:text="클러스터링으로 이동" />
 </LinearLayout>
