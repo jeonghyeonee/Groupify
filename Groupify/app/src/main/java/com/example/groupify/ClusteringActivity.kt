@@ -14,6 +14,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.storage.FirebaseStorage
 import java.io.File
+import java.io.Serializable
 
 class ClusteringActivity : AppCompatActivity() {
 
@@ -38,23 +39,24 @@ class ClusteringActivity : AppCompatActivity() {
         downloadAndParseFile()
 
         // '확인' 버튼을 누르면 LauncherActivity 호출
+        // ClusteringActivity에서 'clusteredApps' 데이터 전달 확인
         confirmButton.setOnClickListener {
             Log.d("ClusteringActivity", "Confirm button clicked")
 
-            // 클러스터링된 앱 목록을 Intent로 넘기기
             val intent = Intent(this, LauncherActivity::class.java)
 
-            // 클러스터링된 앱 정보 전달 (앱 이름과 패키지 이름)
+            // 클러스터링된 앱 정보 전달
             val clusteredApps = ArrayList<Pair<String, String>>()
-            for ((_, apps) in clusterMap) {
+            for ((cluster, apps) in clusterMap) {
                 clusteredApps.addAll(apps)
             }
 
             // 앱 목록을 Intent로 전달
-            intent.putExtra("clusteredApps", clusteredApps)
+            intent.putExtra("clusteredApps", clusterMap as Serializable)
             startActivity(intent)
             finish()  // ClusteringActivity 종료
         }
+
     }
 
     private fun downloadAndParseFile() {
@@ -74,6 +76,7 @@ class ClusteringActivity : AppCompatActivity() {
 
         storageRef.getBytes(Long.MAX_VALUE).addOnSuccessListener { bytes ->
             val resultText = String(bytes)
+            Log.d("ClusteringActivity", "Downloaded file content: $resultText")
 
             val file = File(recentsDir, "logcat_SUA2_apps.txt")
             file.writeText(resultText)
@@ -84,23 +87,29 @@ class ClusteringActivity : AppCompatActivity() {
         }.addOnFailureListener {
             Log.e("ClusteringActivity", "Failed to download file from Firebase", it)
         }
+
     }
 
     private fun parseResultText(resultText: String) {
         val lines = resultText.split("\n")
-
         for (line in lines) {
             if (line.isNotEmpty()) {
                 val parts = line.split(", ")
-                val appName = parts[0].split(": ")[1]  // 앱 이름
-                val packageName = parts[1].split(": ")[1]  // 패키지 이름
-                val cluster = parts[2].split(": ")[1]  // 클러스터 번호
 
-                // 클러스터 맵에 해당 클러스터가 없으면 추가
-                if (!clusterMap.containsKey(cluster)) {
-                    clusterMap[cluster] = mutableListOf()
+                if (parts.size >= 4) {
+                    val packageName = parts[1].split(": ")[1]  // 패키지 이름
+                    val cluster = parts[2].split(": ")[1]  // 클러스터 번호
+
+                    Log.d("ClusteringActivity", "Parsed packageName: $packageName, cluster: $cluster")
+
+                    // 클러스터 맵에 클러스터 번호에 해당하는 패키지 이름 추가
+                    if (!clusterMap.containsKey(cluster)) {
+                        clusterMap[cluster] = mutableListOf()
+                    }
+                    clusterMap[cluster]?.add(Pair(packageName, cluster))
+                } else {
+                    Log.e("ClusteringActivity", "Line format is incorrect: $line")
                 }
-                clusterMap[cluster]?.add(Pair(appName, packageName))
             }
         }
 
@@ -112,6 +121,7 @@ class ClusteringActivity : AppCompatActivity() {
         scrollViewContainer.visibility = ScrollView.VISIBLE
 
         for ((cluster, apps) in clusterMap) {
+            // 클러스터별로 폴더 헤더 추가
             val clusterHeader = TextView(this)
             clusterHeader.text = "Cluster $cluster"
             clusterHeader.setTextColor(Color.BLACK)
@@ -120,18 +130,19 @@ class ClusteringActivity : AppCompatActivity() {
             clusterHeader.setPadding(0, 20, 0, 10)
             appContainer.addView(clusterHeader)
 
-            val appGridLayout = GridLayout(this)
-            appGridLayout.columnCount = 3
-            appContainer.addView(appGridLayout)
+            // 각 클러스터에 속한 앱들을 폴더로 묶음
+            val folderLayout = LinearLayout(this)
+            folderLayout.orientation = LinearLayout.VERTICAL
+            appContainer.addView(folderLayout)
 
-            for ((appName, packageName) in apps) {
-                val appLayout = createAppLayout(appName, packageName)
-                appGridLayout.addView(appLayout)
+            for ((packageName, _) in apps) {
+                val appLayout = createAppLayout(packageName)
+                folderLayout.addView(appLayout)
             }
         }
     }
 
-    private fun createAppLayout(appName: String, packageName: String): LinearLayout {
+    private fun createAppLayout(packageName: String): LinearLayout {
         val appLayout = LinearLayout(this)
         appLayout.orientation = LinearLayout.VERTICAL
         appLayout.setPadding(8, 8, 8, 8)
@@ -147,7 +158,12 @@ class ClusteringActivity : AppCompatActivity() {
         imageView.layoutParams = LinearLayout.LayoutParams(150, 150)
 
         val textView = TextView(this)
-        textView.text = appName
+        try {
+            val appName = packageManager.getApplicationLabel(packageManager.getApplicationInfo(packageName, 0))
+            textView.text = appName
+        } catch (e: PackageManager.NameNotFoundException) {
+            textView.text = packageName
+        }
         textView.setTextColor(Color.BLACK)
 
         appLayout.addView(imageView)
@@ -155,4 +171,6 @@ class ClusteringActivity : AppCompatActivity() {
 
         return appLayout
     }
+
+
 }

@@ -1,35 +1,26 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/mainLayout"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:id="@+id/mainLayout">
 
-    <!-- 상단 제목 -->
-    <TextView
-        android:id="@+id/launcherTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="My Launcher"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:paddingBottom="16dp" />
-
-    <!-- 앱 목록을 스와이프할 수 있는 ViewPager -->
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
+    <!-- GridLayout for folders -->
+    <GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:columnCount="3"
+        android:padding="16dp"
+        android:orientation="horizontal" />
 
-    <!-- 하단 Dock (자주 사용하는 앱 고정) -->
+    <!-- Dock layout -->
     <LinearLayout
         android:id="@+id/dockLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="bottom"
-        android:padding="8dp"
-        android:background="#EEEEEE" />
+        android:gravity="center"/>
+
 </LinearLayout>

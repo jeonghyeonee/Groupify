@@ -1,18 +1,27 @@
 package com.example.groupify
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 
-class ViewPagerAdapter(fm: FragmentManager, private val pages: List<List<Pair<String, String>>>) :
+class ViewPagerAdapter(fm: FragmentManager, private val clusterMap: Map<String, List<Pair<String, String>>>) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
     override fun getCount(): Int {
-        return pages.size // 페이지 수 반환
+        return clusterMap.size // 클러스터 수만큼 페이지 생성
     }
 
     override fun getItem(position: Int): Fragment {
-        // 각 페이지에 해당하는 Fragment를 반환
-        return AppPageFragment.newInstance(pages[position])
+        val cluster = clusterMap.keys.elementAt(position)
+        Log.d("ViewPagerAdapter", "Creating fragment for cluster: $cluster")
+        return AppPageFragment.newInstance(clusterMap[cluster] ?: emptyList())
+    }
+
+    override fun getPageTitle(position: Int): CharSequence {
+        val cluster = clusterMap.keys.elementAt(position)
+        return "Cluster $cluster"
     }
 }
+
+
