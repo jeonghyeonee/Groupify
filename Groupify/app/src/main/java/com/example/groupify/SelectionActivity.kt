@@ -21,7 +21,7 @@ class SelectionActivity : AppCompatActivity() {
 
         val buttonColorRange = findViewById<Button>(R.id.button_color_range)
         buttonColorRange.setOnClickListener {
-            val intent = Intent(this, ClusteringActivity::class.java)
+            val intent = Intent(this, ClusterInputActivity::class.java)
             startActivity(intent)
         }
     }

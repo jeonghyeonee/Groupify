@@ -5,13 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- 폴더 개수를 입력할 수 있는 EditText -->
-    <EditText
-        android:id="@+id/editText_folder_count"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="폴더 개수를 입력하세요"
-        android:inputType="number" />
 
     <!-- 기능 분류 버튼 -->
     <Button

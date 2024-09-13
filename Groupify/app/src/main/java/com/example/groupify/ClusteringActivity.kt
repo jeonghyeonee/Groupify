@@ -6,7 +6,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
-import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
@@ -35,11 +34,13 @@ class ClusteringActivity : AppCompatActivity() {
         scrollViewContainer = findViewById(R.id.scrollViewContainer)
         confirmButton = findViewById(R.id.confirmButton)
 
+        // ClusterInputActivity에서 전달받은 K 값 가져오기
+        val kValue = intent.getStringExtra("clusterCount") ?: "1"  // 기본값으로 1 설정
+
         // Firebase Storage에서 파일 다운로드 후 파싱
-        downloadAndParseFile()
+        downloadAndParseFile(kValue)
 
         // '확인' 버튼을 누르면 LauncherActivity 호출
-        // ClusteringActivity에서 'clusteredApps' 데이터 전달 확인
         confirmButton.setOnClickListener {
             Log.d("ClusteringActivity", "Confirm button clicked")
 
@@ -47,7 +48,7 @@ class ClusteringActivity : AppCompatActivity() {
 
             // 클러스터링된 앱 정보 전달
             val clusteredApps = ArrayList<Pair<String, String>>()
-            for ((cluster, apps) in clusterMap) {
+            for ((_, apps) in clusterMap) {
                 clusteredApps.addAll(apps)
             }
 
@@ -56,11 +57,12 @@ class ClusteringActivity : AppCompatActivity() {
             startActivity(intent)
             finish()  // ClusteringActivity 종료
         }
-
     }
 
-    private fun downloadAndParseFile() {
-        val storageRef = FirebaseStorage.getInstance().reference.child("results/logcat_SUA2_apps_ee21702d85b4e078.txt")
+    private fun downloadAndParseFile(kValue: String) {
+        // Firebase Storage에서 K 값에 맞는 파일 다운로드
+        val fileName = "logcat_SUA2_apps_ee21702d85b4e078_K${kValue}_results.txt"
+        val storageRef = FirebaseStorage.getInstance().reference.child("results/$fileName")
 
         val recentsDir = File(getExternalFilesDir(null), "Recents")
 
@@ -78,16 +80,15 @@ class ClusteringActivity : AppCompatActivity() {
             val resultText = String(bytes)
             Log.d("ClusteringActivity", "Downloaded file content: $resultText")
 
-            val file = File(recentsDir, "logcat_SUA2_apps.txt")
+            val file = File(recentsDir, fileName)
             file.writeText(resultText)
 
             Log.d("ClusteringActivity", "File saved at: ${file.absolutePath}")
 
             parseResultText(resultText)
-        }.addOnFailureListener {
-            Log.e("ClusteringActivity", "Failed to download file from Firebase", it)
+        }.addOnFailureListener { e ->
+            Log.e("ClusteringActivity", "Failed to download file from Firebase: ${e.message}")
         }
-
     }
 
     private fun parseResultText(resultText: String) {
@@ -171,6 +172,4 @@ class ClusteringActivity : AppCompatActivity() {
 
         return appLayout
     }
-
-
 }

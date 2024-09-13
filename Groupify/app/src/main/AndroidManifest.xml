@@ -25,7 +25,7 @@
 
         <!-- ClusteringActivity에서 홈 화면을 수정하는 작업을 수행 -->
         <activity android:name=".ClusteringActivity" android:exported="true" />
-
+        <activity android:name=".ClusterInputActivity" android:exported="true" />
         <activity android:name=".SelectionActivity" android:exported="true" />
         <activity android:name=".DeployActivity" android:exported="true" />
         <activity android:name=".ColorRangeActivity" android:exported="true" />

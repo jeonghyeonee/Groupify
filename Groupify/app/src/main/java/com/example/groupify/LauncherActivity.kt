@@ -194,9 +194,4 @@ class LauncherActivity : AppCompatActivity() {
 
 
 
-
-    // 뒤로가기 버튼 무시
-    override fun onBackPressed() {
-        // 아무것도 하지 않음으로써 앱이 종료되지 않게 함
-    }
 }
