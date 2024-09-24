@@ -1,10 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.groupify">
 
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
     <application
         android:allowBackup="true"
@@ -13,36 +13,48 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-
         android:hardwareAccelerated="true">
 
+        <!-- MainActivity가 앱의 기본 시작 액티비티 -->
         <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SelectionActivity"
-            android:exported="true"></activity>
-        <activity
-            android:name=".DeployActivity"
-            android:exported="true"></activity>
 
-     
+<!--         ClusteringActivity에서 홈 화면을 수정하는 작업을 수행 -->
+        <activity android:name=".ClusteringActivity" android:exported="true" />
+        <activity android:name=".ClusterInputActivity" android:exported="true" />
+        <activity android:name=".SelectionActivity" android:exported="true" />
+        <activity android:name=".DeployActivity" android:exported="true" />
+        <activity android:name=".ColorRangeActivity" android:exported="true" />
         <activity
-            android:name=".ColorRangeActivity"
-            android:exported="true"></activity>
+            android:name=".LauncherActivity"
+            android:exported="true"
+            android:label="My Launcher">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
-   
+        <!-- HomeActivity를 런처로 설정 -->
+        <activity android:name=".HomeActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.HOME" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
+        <activity android:name=".FunctionClassify" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
-        <activity
-            android:name=".FunctionClassify"
-            android:exported="true"></activity>
     </application>
-
-
-      
-
 </manifest>

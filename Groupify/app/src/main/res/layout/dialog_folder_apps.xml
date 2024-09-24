@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 타이틀 또는 설명 -->
+    <TextView
+        android:id="@+id/dialogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Folder Apps"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:paddingBottom="8dp"/>
+
+    <!-- 앱들을 그리드로 보여줄 GridLayout -->
+    <GridLayout
+        android:id="@+id/gridLayoutApps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        android:padding="8dp">
+        <!-- 이곳에 앱 아이템들이 동적으로 추가될 것입니다. -->
+    </GridLayout>
+
+</LinearLayout>
