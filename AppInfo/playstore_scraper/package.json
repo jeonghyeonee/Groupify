@@ -12,7 +12,12 @@
   "license": "ISC",
   "dependencies": {
     "csv-writer": "^1.6.0",
+<<<<<<< HEAD
     "google-play-scraper": "^10.0.0",
     "json2csv": "^6.0.0-alpha.2"
+=======
+    "express": "^4.21.0",
+    "google-play-scraper": "^10.0.0"
+>>>>>>> dad8c7c4c3edc91a9aa2a201d44b0d428278c46b
   }
 }

@@ -3,6 +3,11 @@ package com.example.groupify
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -24,9 +29,12 @@ import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import android.provider.Settings.Secure
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var storageRef: StorageReference
+    private lateinit var deviceId: String  // 여기에 deviceId 선언
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +47,25 @@ class MainActivity : AppCompatActivity() {
         // "Hello~" 텍스트뷰 설정
         val textView: TextView = findViewById(R.id.textView)
         textView.text = "Hello~"
+
+        // 기기의 ANDROID_ID 가져오기
+        deviceId = Secure.getString(contentResolver, Secure.ANDROID_ID)
+
+        FirebaseAuth.getInstance().currentUser?.getIdToken(true)
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val idToken = task.result?.token
+                    Log.d("FirebaseAuth", "Token refreshed successfully: $idToken")
+                    // Firebase 작업 수행
+                } else {
+                    Log.e("FirebaseAuth", "Token refresh failed", task.exception)
+                    // 실패 시 로그인 요청 또는 처리
+                }
+            }
+
+
+
+
 
         // 권한 확인 및 요청
         checkAndRequestPermissions()
@@ -113,39 +140,43 @@ class MainActivity : AppCompatActivity() {
     private fun logInstalledApps() {
         Log.d("LogApps", "Logging installed apps")
         val packageManager = packageManager
-        val packages = packageManager.getInstalledPackages(0)
+
+        // 모든 설치된 앱을 가져옴
+        val installedPackages = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
         val logStringBuilder = StringBuilder()
-        val googlePlayLogStringBuilder = StringBuilder()
 
         // 앱 이름과 아이콘을 표시할 컨테이너
         val appContainer: LinearLayout = findViewById(R.id.appContainer)
 
+        for (appInfo in installedPackages) {
+            val packageName = appInfo.packageName
 
-        for (packageInfo in packages) {
-            val appName = packageInfo.applicationInfo.loadLabel(packageManager).toString()
-            val packageName = packageInfo.packageName
-            val versionName = packageInfo.versionName
-            val versionCode = packageInfo.longVersionCode
+            // 사용자가 볼 수 있는 앱만 필터링 (시스템 앱 제외)
+            if (packageManager.getLaunchIntentForPackage(packageName) != null) {
+                val appName = appInfo.loadLabel(packageManager).toString()
+                val versionName = packageManager.getPackageInfo(packageName, 0).versionName
+                val versionCode = packageManager.getPackageInfo(packageName, 0).longVersionCode
 
-            // 모든 앱의 로그 문자열 생성
-            logStringBuilder.append("App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode\n")
+                // 앱 아이콘 가져오기
+                val appIcon = appInfo.loadIcon(packageManager)
 
-            // 모든 앱 로그 출력 (AllAppList 태그 사용)
-            Log.d("AllAppList", "App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode")
+                // 대표 색상 추출 (예외 처리 추가)
+                val dominantColorHex = try {
+                    getDominantColorHex(appIcon)
+                } catch (e: Exception) {
+                    Log.e("PaletteError", "Failed to get dominant color for $appName", e)
+                    "#000000" // 실패 시 기본 색상 반환
+                }
 
-            // 구글 플레이 스토어에서 설치된 앱만 필터링
-            if (packageManager.getInstallerPackageName(packageInfo.packageName) == "com.android.vending") {
-                // 구글 플레이 스토어에서 설치된 앱의 로그 문자열 생성
-//                googlePlayLogStringBuilder.append("App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode\n")
-                val appName = packageInfo.applicationInfo.loadLabel(packageManager).toString()
-                val appIcon = packageInfo.applicationInfo.loadIcon(packageManager)
+                // 모든 앱의 로그 문자열 생성
+                logStringBuilder.append("App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode, Dominant Color: $dominantColorHex\n")
 
                 // 로그 출력
-                Log.d("AppInfo", "App Name: $appName")
+                Log.d("AllAppList", "App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode, Dominant Color: $dominantColorHex")
 
                 // 동적으로 텍스트뷰와 이미지뷰 생성
                 val textView = TextView(this)
-                textView.text = appName
+                textView.text = "$appName\nColor: $dominantColorHex"
 
                 val imageView = ImageView(this)
                 imageView.setImageDrawable(appIcon)
@@ -162,25 +193,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         // 모든 앱 로그 저장 및 Firebase에 업로드
-        saveLogcat(logStringBuilder.toString(), "logcat_all_apps")
-        // 구글 플레이 스토어에서 설치된 앱 로그 저장 및 Firebase에 업로드
-//        saveLogcat(googlePlayLogStringBuilder.toString(), "logcat_google_play_apps")
+        saveLogcat(logStringBuilder.toString(), "logcat_SUA2_apps")
     }
-
     private fun saveLogcat(log: String, fileName: String) {
-        // 타임스탬프 생성
-        val timestamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-
         // 로그 파일 경로 설정
         val logsDir = getExternalFilesDir(null)
         if (logsDir != null && !logsDir.exists()) {
             logsDir.mkdirs()
         }
 
-        val logFile = File(logsDir, "${fileName}_$timestamp.txt")
+        val logFile = File(logsDir, "${fileName}_$deviceId.txt")
 
         try {
-            FileOutputStream(logFile, true).use { output ->
+            FileOutputStream(logFile, false).use { output ->
                 output.write(log.toByteArray())
             }
             Log.d("saveLogcat", "Logcat saved to ${logFile.absolutePath}")
@@ -203,6 +228,60 @@ class MainActivity : AppCompatActivity() {
             Log.e("Firebase", "Failed to upload log", exception)
         }
     }
-}
 
+    // 앱 아이콘의 대표 색상 코드 추출
+    private fun getDominantColorHex(drawable: Drawable): String {
+        val bitmap = drawableToBitmap(drawable)
+
+        // 색상 빈도를 저장할 맵 초기화
+        val colorFrequencyMap: MutableMap<Int, Int> = HashMap()
+
+        for (x in 0 until bitmap.width) {
+            for (y in 0 until bitmap.height) {
+                val pixelColor = bitmap.getPixel(x, y)
+
+                // 완전히 투명한 픽셀 무시
+                if (Color.alpha(pixelColor) < 255) continue
+
+                // 거의 흰색이나 거의 검은색은 무시
+                if (isNearWhiteOrBlack(pixelColor)) continue
+
+                val colorCount = colorFrequencyMap[pixelColor] ?: 0
+                colorFrequencyMap[pixelColor] = colorCount + 1
+            }
+        }
+
+        // 가장 빈도가 높은 색상 선택
+        val dominantColor = colorFrequencyMap.maxByOrNull { it.value }?.key ?: Color.GRAY
+
+        // 헥사 코드로 변환
+        return String.format("#%06X", 0xFFFFFF and dominantColor)
+    }
+
+    private fun drawableToBitmap(drawable: Drawable): Bitmap {
+        if (drawable is BitmapDrawable) {
+            return drawable.bitmap
+        }
+
+        val width = drawable.intrinsicWidth.takeIf { it > 0 } ?: 1
+        val height = drawable.intrinsicHeight.takeIf { it > 0 } ?: 1
+        val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        drawable.setBounds(0, 0, canvas.width, canvas.height)
+        drawable.draw(canvas)
+        return bitmap
+    }
+
+    private fun isNearWhiteOrBlack(color: Int): Boolean {
+        val red = Color.red(color)
+        val green = Color.green(color)
+        val blue = Color.blue(color)
+        // 흰색이나 검은색 근처의 색상을 무시 (범위를 조정 가능)
+        val nearWhiteThreshold = 245
+        val nearBlackThreshold = 10
+        return (red > nearWhiteThreshold && green > nearWhiteThreshold && blue > nearWhiteThreshold) ||
+                (red < nearBlackThreshold && green < nearBlackThreshold && blue < nearBlackThreshold)
+    }
+
+}
 
