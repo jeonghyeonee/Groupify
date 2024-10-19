@@ -44,7 +44,7 @@ class ClusteringActivity : AppCompatActivity() {
         confirmButton.setOnClickListener {
             Log.d("ClusteringActivity", "Confirm button clicked")
 
-            val intent = Intent(this, LauncherActivity::class.java)
+
 
             // 클러스터링된 앱 정보 전달
             val clusteredApps = ArrayList<Pair<String, String>>()

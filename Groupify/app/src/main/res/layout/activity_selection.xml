@@ -1,4 +1,4 @@
-<LinearLayout
+  <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -19,4 +19,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="클러스터링으로 이동" />
-</LinearLayout>
+
+
+
+
+    <Button
+      android:id="@+id/button_sync"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="동기화"
+      android:layout_marginTop="20dp"
+      android:layout_gravity="center" />
+
+  </LinearLayout>
