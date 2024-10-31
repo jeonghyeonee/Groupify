@@ -18,7 +18,7 @@
         android:hardwareAccelerated="true">
 
         <!-- MainActivity가 앱의 기본 시작 액티비티 -->
-        <activity android:name=".MainActivity" android:exported="true">
+        <activity android:name=".MainActivity" android:exported="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar">>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -26,15 +26,16 @@
         </activity>
 
         <!-- ClusteringActivity에서 홈 화면을 수정하는 작업을 수행 -->
+        <activity android:name=".WelcomeActivity" android:exported="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar"> </activity>
         <activity android:name=".ClusteringActivity" android:exported="true" />
         <activity android:name=".ColorClassify" android:exported="true" />
-        <activity android:name=".SelectionActivity" android:exported="true" />
+        <activity android:name=".SelectionActivity" android:exported="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar"> </activity>
         <activity android:name=".DeployActivity" android:exported="true" />
         <activity android:name=".ColorRangeActivity" android:exported="true" />
+
         <activity
-            android:name=".LauncherActivity"
-            android:exported="true"
-            android:label="My Launcher">
+            android:name=".FolderLauncherActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.HOME" />
@@ -42,14 +43,7 @@
             </intent-filter>
         </activity>
 
-        <!-- HomeActivity를 런처로 설정 -->
-        <activity android:name=".HomeActivity" android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.HOME" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
+
 
         <activity android:name=".FunctionClassify" android:exported="true" />
 

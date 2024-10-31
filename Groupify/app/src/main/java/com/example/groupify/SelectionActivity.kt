@@ -4,7 +4,10 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
+import android.graphics.drawable.AdaptiveIconDrawable
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.net.Uri
@@ -17,6 +20,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.palette.graphics.Palette
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.auth.FirebaseAuth
@@ -25,6 +29,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import android.provider.Settings.Secure
+import android.widget.LinearLayout
 
 
 class SelectionActivity : AppCompatActivity() {
@@ -63,17 +68,15 @@ class SelectionActivity : AppCompatActivity() {
                 .show()
         }
 
-
-
         // 기능 선택 버튼 설정
-        val buttonFunction = findViewById<Button>(R.id.button_function)
+        val buttonFunction = findViewById<LinearLayout>(R.id.button_function)
         buttonFunction.setOnClickListener {
             val intent = Intent(this, FunctionClassify::class.java)
             startActivity(intent)
         }
 
         // 색상 선택 버튼 설정
-        val buttonColorRange = findViewById<Button>(R.id.button_color_range)
+        val buttonColorRange = findViewById<LinearLayout>(R.id.button_color_range)
         buttonColorRange.setOnClickListener {
             val intent = Intent(this, ColorClassify::class.java)
             Log.d("suacheck", "color 가 선택되었습니다")
@@ -85,59 +88,21 @@ class SelectionActivity : AppCompatActivity() {
         auth.signInAnonymously()
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // 로그인 성공
                     val user: FirebaseUser? = auth.currentUser
                     Log.d("FirebaseAuth", "signInAnonymously:success")
-
-                    // 사용자 토큰 가져오기
-                    user?.getIdToken(true)?.addOnCompleteListener { tokenTask ->
-                        if (tokenTask.isSuccessful) {
-                            val token = tokenTask.result?.token
-                            Log.d("FirebaseAuth", "Token: $token")
-
-                            // 이 토큰을 사용하여 Firebase Storage에 접근할 수 있습니다.
-                            accessFirebaseWithToken(token)
-                        } else {
-                            Log.w("FirebaseAuth", "Token retrieval failed", tokenTask.exception)
-                        }
-                    }
                 } else {
-                    // 로그인 실패
                     Log.w("FirebaseAuth", "signInAnonymously:failure", task.exception)
                 }
             }
     }
 
-    private fun accessFirebaseWithToken(token: String?) {
-        if (token != null) {
-            // 토큰을 사용하여 Firebase Storage 또는 다른 Firebase 서비스에 접근
-            // 예시로 StorageRef에서 직접 사용할 필요는 없지만
-            val storage = FirebaseStorage.getInstance()
-            val storageRef = storage.reference
-            val fileRef = storageRef.child("logs/myfile.json")
-
-            // 업로드 작업을 예시로 진행할 수 있음
-            val fileUri = Uri.fromFile(File("/path/to/your/file"))
-            fileRef.putFile(fileUri).addOnSuccessListener {
-                Log.d("FirebaseStorage", "Upload success")
-            }.addOnFailureListener { exception ->
-                Log.e("FirebaseStorage", "Upload failed", exception)
-            }
-        } else {
-            Log.e("FirebaseAuth", "Token is null, cannot access Firebase")
-        }
-    }
-
-
-
-    // 권한 확인 및 요청
     private fun checkAndRequestPermissions() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             if (!Environment.isExternalStorageManager()) {
                 val intent = Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION)
                 startActivityForResult(intent, 1)
             } else {
-                logInstalledApps()  // 앱 목록 동기화 로직
+                logInstalledApps()
             }
         } else {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
@@ -147,7 +112,7 @@ class SelectionActivity : AppCompatActivity() {
                     Manifest.permission.READ_EXTERNAL_STORAGE
                 ), 1)
             } else {
-                logInstalledApps()  // 앱 목록 동기화 로직
+                logInstalledApps()
             }
         }
     }
@@ -155,14 +120,14 @@ class SelectionActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == 1 && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            logInstalledApps()  // 앱 목록 동기화 로직
+            logInstalledApps()
         }
     }
 
     private fun logInstalledApps() {
         val packageManager = packageManager
         val installedPackages = packageManager.getInstalledApplications(PackageManager.GET_META_DATA)
-        val appDataList = mutableListOf<Map<String, Any>>() // JSON 데이터로 저장할 리스트
+        val appDataList = mutableListOf<Map<String, Any>>()
 
         for (appInfo in installedPackages) {
             val packageName = appInfo.packageName
@@ -172,13 +137,12 @@ class SelectionActivity : AppCompatActivity() {
                 val versionCode = packageManager.getPackageInfo(packageName, 0).longVersionCode
                 val appIcon = appInfo.loadIcon(packageManager)
                 val dominantColorHex = try {
-                    getDominantColorHex(appIcon)
+                    extractDominantColorHex(appIcon)
                 } catch (e: Exception) {
                     Log.e("AppLog", "Error extracting dominant color for $appName", e)
                     "#000000"
                 }
 
-                // 각 앱의 정보를 Map으로 변환하여 JSON 형태로 저장
                 val appData = mapOf(
                     "appName" to appName,
                     "packageName" to packageName,
@@ -186,25 +150,44 @@ class SelectionActivity : AppCompatActivity() {
                     "versionCode" to versionCode,
                     "dominantColor" to dominantColorHex
                 )
-
-                // 리스트에 추가
                 appDataList.add(appData)
 
-                // 'suacheck' 태그로 로그 찍기
-                Log.d("suacheck", "App Name: $appName, Package Name: $packageName, Version Name: $versionName, Version Code: $versionCode, Dominant Color: $dominantColorHex")
+                Log.d("suacheck", "App Name: $appName, Package Name: $packageName, Dominant Color: $dominantColorHex")
             }
         }
 
-        // Firebase에 JSON 데이터로 저장
         saveToFirebaseAsJson(appDataList)
         Log.d("suacheck", "firebase에 업로드 되었습니다")
     }
 
+    private fun extractDominantColorHex(drawable: Drawable): String {
+        val bitmap = when (drawable) {
+            is BitmapDrawable -> drawable.bitmap
+            is AdaptiveIconDrawable -> {
+                val bitmap = Bitmap.createBitmap(
+                    drawable.intrinsicWidth,
+                    drawable.intrinsicHeight,
+                    Bitmap.Config.ARGB_8888
+                )
+                val canvas = android.graphics.Canvas(bitmap)
+                drawable.setBounds(0, 0, canvas.width, canvas.height)
+                drawable.draw(canvas)
+                bitmap
+            }
+            else -> throw IllegalArgumentException("Unsupported drawable type")
+        }
+
+        return extractDominantColorFromBitmap(bitmap)
+    }
+
+    private fun extractDominantColorFromBitmap(bitmap: Bitmap): String {
+        val palette = Palette.from(bitmap).generate()
+        val dominantColor = palette.getDominantColor(Color.GRAY)
+        return String.format("#%06X", 0xFFFFFF and dominantColor)
+    }
 
     private fun saveToFirebaseAsJson(appDataList: List<Map<String, Any>>) {
-        val gson = com.google.gson.Gson()  // Gson 객체 생성
-
-        // appDataList를 JSON 문자열로 변환
+        val gson = com.google.gson.Gson()
         val jsonString = gson.toJson(appDataList)
 
         val logFile = File(getExternalFilesDir(null), "app_data_$deviceId.json")
@@ -215,7 +198,7 @@ class SelectionActivity : AppCompatActivity() {
                 output.write(jsonString.toByteArray())
             }
             Log.d("suacheck", "JSON data saved to ${logFile.absolutePath}")
-            uploadLogToFirebase(logFile)  // Firebase에 업로드
+            uploadLogToFirebase(logFile)
         } catch (e: IOException) {
             Log.e("saveToFirebaseAsJson", "Error saving JSON", e)
         }
@@ -233,31 +216,5 @@ class SelectionActivity : AppCompatActivity() {
         }.addOnFailureListener { exception ->
             Log.e("Firebase", "Failed to upload JSON data", exception)
         }
-    }
-
-
-
-
-    private fun getDominantColorHex(drawable: Drawable): String {
-        val bitmap = (drawable as BitmapDrawable).bitmap
-        val colorFrequencyMap: MutableMap<Int, Int> = HashMap()
-
-        for (x in 0 until bitmap.width) {
-            for (y in 0 until bitmap.height) {
-                val pixelColor = bitmap.getPixel(x, y)
-                if (Color.alpha(pixelColor) < 255 || isNearWhiteOrBlack(pixelColor)) continue
-                val colorCount = colorFrequencyMap[pixelColor] ?: 0
-                colorFrequencyMap[pixelColor] = colorCount + 1
-            }
-        }
-        val dominantColor = colorFrequencyMap.maxByOrNull { it.value }?.key ?: Color.GRAY
-        return String.format("#%06X", 0xFFFFFF and dominantColor)
-    }
-
-    private fun isNearWhiteOrBlack(color: Int): Boolean {
-        val red = Color.red(color)
-        val green = Color.green(color)
-        val blue = Color.blue(color)
-        return (red > 245 && green > 245 && blue > 245) || (red < 10 && green < 10 && blue < 10)
     }
 }

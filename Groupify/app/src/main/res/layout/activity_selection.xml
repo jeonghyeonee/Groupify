@@ -1,34 +1,106 @@
-  <LinearLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
 
-
     <!-- 기능 분류 버튼 -->
-    <Button
+    <LinearLayout
         android:id="@+id/button_function"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="기능 분류로 이동" />
+        android:layout_width="380dp"
+        android:layout_height="180dp"
+        android:orientation="horizontal"
+        android:background="@drawable/border_radius"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <!-- 텍스트 부분 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- 굵은 글씨 텍스트 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="기능 분류로 이동"
+                android:textStyle="bold"
+                android:textSize="20sp" />
+
+            <!-- 작은 글씨 텍스트 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="바로가기"
+                android:textSize="14sp"
+                android:textColor="#808080"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
+
+        <!-- 아이콘 이미지 -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/groupify_logo"
+            android:layout_marginStart="8dp" />
+    </LinearLayout>
 
     <!-- 색상 범위 버튼 -->
-    <Button
+    <LinearLayout
         android:id="@+id/button_color_range"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="클러스터링으로 이동" />
+        android:layout_width="380dp"
+        android:layout_height="180dp"
+        android:orientation="horizontal"
+        android:background="@drawable/border_radius"
+        android:padding="16dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp">
 
+        <!-- 텍스트 부분 -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
 
+            <!-- 굵은 글씨 텍스트 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="클러스터링으로 이동"
+                android:textStyle="bold"
+                android:textSize="20sp" />
 
+            <!-- 작은 글씨 텍스트 -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="바로가기"
+                android:textSize="14sp"
+                android:textColor="#808080"
+                android:layout_marginTop="4dp" />
+        </LinearLayout>
 
+        <!-- 아이콘 이미지 -->
+        <!-- 수정된 부분 -->
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/groupify_logo"
+            android:layout_marginStart="8dp" />
+
+    </LinearLayout>
+
+    <!-- 동기화 버튼 -->
     <Button
-      android:id="@+id/button_sync"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="동기화"
-      android:layout_marginTop="20dp"
-      android:layout_gravity="center" />
+        android:id="@+id/button_sync"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="동기화"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center" />
 
-  </LinearLayout>
+</LinearLayout>

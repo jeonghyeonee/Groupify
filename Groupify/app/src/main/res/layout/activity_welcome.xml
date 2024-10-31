@@ -1,0 +1,56 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingTop="100dp">
+
+        <!-- 첫 번째 안내 텍스트 -->
+        <TextView
+            android:id="@+id/welcomeText1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/welcome_message_1"
+            android:textSize="18sp"
+            android:textColor="#000000" />
+
+        <!-- 두 번째 강조 텍스트 -->
+        <TextView
+            android:id="@+id/welcomeText2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="18sp"
+            android:textColor="#000000" />
+
+        <!-- 웰컴 로고 이미지 -->
+        <ImageView
+            android:id="@+id/welcomeLogo"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/welcome_logo"
+            android:layout_marginTop="24dp" />
+
+
+
+        <!-- Join Now 버튼 -->
+        <Button
+            android:id="@+id/joinNowButton"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="100dp"
+            android:backgroundTint="#4b5ae4"
+            android:background="@drawable/border_radius"
+            android:text="시작하기"
+            android:textColor="#ffffff"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+</ScrollView>

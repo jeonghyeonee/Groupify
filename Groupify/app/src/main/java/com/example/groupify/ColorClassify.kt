@@ -1,5 +1,6 @@
 package com.example.groupify
 
+import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -22,7 +23,7 @@ class ColorClassify : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cluster_input)
 
-        Log.d("suacheck", "ClusteringInputActivity onCreate 호출됨")
+        Log.d("suacheck", "ColorClassify onCreate 호출됨")
 
         // Device ID 가져오기
         deviceId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
@@ -81,6 +82,7 @@ class ColorClassify : AppCompatActivity() {
                     Log.d("suacheck", "서버 응답 데이터: $responseData")
                     runOnUiThread {
                         Toast.makeText(this@ColorClassify, "서버 응답 완료", Toast.LENGTH_SHORT).show()
+                        navigateToFolderLauncherActivity(responseData)
                     }
                 } else {
                     Log.e("suacheck", "서버 응답 없음")
@@ -88,4 +90,17 @@ class ColorClassify : AppCompatActivity() {
             }
         })
     }
+
+    // FolderLauncherActivity로 이동하는 메서드
+    private fun navigateToFolderLauncherActivity(responseData: String) {
+        if (responseData.isNotEmpty()) {
+            val intent = Intent(this, FolderLauncherActivity::class.java)
+            intent.putExtra("responseData", responseData)
+            Log.d("suacheck", "FolderLauncherActivity로 이동합니다.")
+            startActivity(intent)
+        } else {
+            Log.e("suacheck", "responseData가 비어 있습니다.")
+        }
+    }
+
 }

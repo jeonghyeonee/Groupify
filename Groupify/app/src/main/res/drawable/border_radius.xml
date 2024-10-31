@@ -1,0 +1,10 @@
+<!-- res/drawable/button_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <corners android:radius="16dp" /> <!-- 모서리 반경 설정 -->
+    <padding
+        android:left="10dp"
+        android:right="10dp"
+        android:top="5dp"
+        android:bottom="5dp" />
+</shape>
