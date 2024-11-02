@@ -6,6 +6,7 @@ import android.provider.Settings
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.*
@@ -21,7 +22,7 @@ class ColorClassify : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cluster_input)
+        setContentView(R.layout.activity_colorclassify)
 
         Log.d("suacheck", "ColorClassify onCreate 호출됨")
 
@@ -31,6 +32,9 @@ class ColorClassify : AppCompatActivity() {
 
         clusterInput = findViewById(R.id.editTextCluster)
         confirmButton = findViewById(R.id.buttonConfirm)
+
+
+
 
         // confirmButton 클릭 이벤트에서 호출
         confirmButton.setOnClickListener {

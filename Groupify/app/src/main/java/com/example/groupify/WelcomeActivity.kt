@@ -16,6 +16,8 @@ import androidx.core.content.ContextCompat
 import com.example.groupify.R
 import com.example.groupify.SelectionActivity
 
+import com.airbnb.lottie.LottieAnimationView
+
 class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,30 +27,27 @@ class WelcomeActivity : AppCompatActivity() {
         val joinNowButton = findViewById<Button>(R.id.joinNowButton)
         val welcomeText1 = findViewById<TextView>(R.id.welcomeText1)
         val welcomeText2 = findViewById<TextView>(R.id.welcomeText2)
+        val welcomeAnimation = findViewById<LottieAnimationView>(R.id.welcomeAnimation)
 
-
+        // Lottie 애니메이션 시작
+        welcomeAnimation.playAnimation()
 
         // HTML 형식의 텍스트 설정
         welcomeText1.text = getString(R.string.welcome_message_1)
         welcomeText2.text = Html.fromHtml(getString(R.string.welcome_message_2), Html.FROM_HTML_MODE_LEGACY)
 
-        joinNowButton.background = ContextCompat.getDrawable(this,R.drawable.border_radius)
+        joinNowButton.background = ContextCompat.getDrawable(this, R.drawable.border_radius)
         joinNowButton.setBackgroundColor(Color.parseColor("#4b5ae4"))
 
         // 3초 후 버튼과 스크롤 애니메이션 동시에 시작
         Handler(Looper.getMainLooper()).postDelayed({
-            // 버튼이 아래에서 위로 올라오는 애니메이션
             joinNowButton.visibility = View.VISIBLE
             val buttonAnimation = ObjectAnimator.ofFloat(joinNowButton, "translationY", 300f, 0f)
-
-            // ScrollView를 스크롤하는 애니메이션
             val scrollAnimation = ObjectAnimator.ofInt(scrollView, "scrollY", scrollView.bottom)
 
-            // 애니메이션 동시 실행 및 설정
             buttonAnimation.duration = 1000
             scrollAnimation.duration = 1000
 
-            // 두 애니메이션 동시에 시작
             buttonAnimation.start()
             scrollAnimation.start()
         }, 3000)
