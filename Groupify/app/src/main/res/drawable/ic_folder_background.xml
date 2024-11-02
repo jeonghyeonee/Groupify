@@ -1,0 +1,5 @@
+<!-- res/drawable/ic_folder_background.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#CCFFFFFF" /> <!-- 반투명 흰색 (CC는 80% 투명도) -->
+    <corners android:radius="8dp" /> <!-- 모서리가 살짝 둥근 정사각형 -->
+</shape>

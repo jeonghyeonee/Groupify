@@ -8,4 +8,13 @@
         <item name="colorAccent">@color/teal_200</item>
     </style>
 
+    <!-- alertDialog design -->
+    <style name="CustomAlertDialog" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:background">@drawable/border_radius</item> <!-- 둥근 모서리 배경 -->
+        <item name="android:textColorPrimary">#000000</item> <!-- 텍스트 색상 -->
+        <item name="android:buttonTint">#4b5ae4</item> <!-- 버튼 색상 -->
+    </style>
+
+
+
 </resources>
