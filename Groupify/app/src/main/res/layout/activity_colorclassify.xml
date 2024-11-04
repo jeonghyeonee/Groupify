@@ -3,48 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
+    <!-- 안내 텍스트 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="몇 개의 폴더로 분류해드릴까요?"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginTop="30dp" />
 
-<!--    &lt;!&ndash; Toolbar  &ndash;&gt;-->
-<!--    <LinearLayout-->
-<!--        xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:background="#ffffff"-->
-<!--        android:padding="8dp">-->
-
-<!--        &lt;!&ndash; Back TextView &ndash;&gt;-->
-<!--        <TextView-->
-<!--            android:id="@+id/backText"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="<"-->
-<!--            android:textSize="30sp"-->
-<!--            android:textColor="#000000"-->
-<!--            android:layout_gravity="center_vertical"-->
-<!--            android:padding="8dp" />-->
-
-
-
-<!--    </LinearLayout>-->
-
-
-    <!-- Content here -->
+    <!-- 클러스터 입력 EditText -->
     <EditText
         android:id="@+id/editTextCluster"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="클러스터 개수를 입력하세요"
+        android:hint="4~12개까지 가능해요"
         android:inputType="number"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:layout_marginTop="50dp"/>
 
+    <!-- 올바른 입력 시 표시할 피드백 TextView -->
+    <TextView
+        android:id="@+id/feedbackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#4b5ae4"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:layout_marginTop="50dp"/> <!-- 기본적으로 숨김 상태 -->
+
+    <!-- 확인 버튼 -->
     <Button
         android:id="@+id/buttonConfirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="확인"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#4b5ae4"
+        android:background="@drawable/border_radius"
+        android:text="분류하러 가기  >"
         android:textSize="18sp"
-        android:layout_marginTop="16dp" />
+        android:textColor="#ffffff"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"/>
+
+
 </LinearLayout>

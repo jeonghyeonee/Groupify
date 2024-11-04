@@ -10,8 +10,15 @@ import com.example.groupify.models.AppData
 
 class FolderAdapter(
     private val folderMap: Map<Int, List<AppData>>,
-    private val onFolderClick: (Int, List<AppData>) -> Unit // 폴더 클릭 시 호출될 콜백
+    private val onFolderClick: (Int, List<AppData>) -> Unit
 ) : RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
+
+    private var folderNames: List<String> = emptyList()
+
+    fun updateFolderNames(namesList: List<String>) {
+        folderNames = namesList
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_folder, parent, false)
@@ -21,8 +28,8 @@ class FolderAdapter(
     override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
         val clusterNumber = folderMap.keys.elementAt(position)
         val appList = folderMap[clusterNumber] ?: emptyList()
-
-        holder.bind(clusterNumber, appList)
+        val folderName = folderNames.getOrNull(position) ?: "Folder $clusterNumber"
+        holder.bind(clusterNumber, appList, folderName)
     }
 
     override fun getItemCount(): Int = folderMap.size
@@ -32,14 +39,10 @@ class FolderAdapter(
         private val folderPreview2: ImageView = itemView.findViewById(R.id.folderPreview2)
         private val folderLabel: TextView = itemView.findViewById(R.id.folderLabel)
 
-        fun bind(clusterNumber: Int, appList: List<AppData>) {
-            // 폴더 이름 설정
-            folderLabel.text = "Folder $clusterNumber"
-
-            // 불투명한 정사각형 배경 설정 (80% 투명도)
+        fun bind(clusterNumber: Int, appList: List<AppData>, folderName: String) {
+            folderLabel.text = folderName
             itemView.setBackgroundResource(R.drawable.ic_folder_background)
 
-            // 앱 아이콘 미리보기 설정 (최대 2개)
             if (appList.isNotEmpty()) {
                 folderPreview1.setImageDrawable(appList[0].appIcon)
                 folderPreview1.visibility = View.VISIBLE
@@ -54,7 +57,6 @@ class FolderAdapter(
                 folderPreview2.visibility = View.GONE
             }
 
-            // 폴더 클릭 시 앱 목록을 보여줌
             itemView.setOnClickListener {
                 onFolderClick(clusterNumber, appList)
             }
