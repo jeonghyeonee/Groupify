@@ -1,11 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.groupify">
 
+    <!-- 앱에서 필요한 권한 선언 -->
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES" />
 
+    <!-- 클리어텍스트 통신 허용 설정 추가 -->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -13,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:hardwareAccelerated="true">
+        android:hardwareAccelerated="true"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"> <!-- 추가된 부분 -->
 
         <!-- MainActivity가 앱의 기본 시작 액티비티 -->
         <activity android:name=".MainActivity" android:exported="true">
@@ -23,12 +27,14 @@
             </intent-filter>
         </activity>
 
-<!--         ClusteringActivity에서 홈 화면을 수정하는 작업을 수행 -->
+        <!-- 클러스터링 관련 액티비티 -->
         <activity android:name=".ClusteringActivity" android:exported="true" />
         <activity android:name=".ClusterInputActivity" android:exported="true" />
         <activity android:name=".SelectionActivity" android:exported="true" />
         <activity android:name=".DeployActivity" android:exported="true" />
         <activity android:name=".ColorRangeActivity" android:exported="true" />
+
+        <!-- 런처 액티비티 설정 -->
         <activity
             android:name=".LauncherActivity"
             android:exported="true"
@@ -40,7 +46,7 @@
             </intent-filter>
         </activity>
 
-        <!-- HomeActivity를 런처로 설정 -->
+        <!-- HomeActivity를 홈 액티비티로 설정 -->
         <activity android:name=".HomeActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -49,12 +55,18 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".FunctionClassify" android:exported="true">
+        <!-- FunctionActivity를 런처 액티비티로 설정 -->
+        <activity android:name=".FunctionActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
+        <!-- 클러스터 선택 및 실행 액티비티 -->
+        <activity android:name=".ClusterSelectActivity" android:exported="true" />
+        <activity android:name=".ClusterLauncherActivity" android:exported="true" />
+
     </application>
+
 </manifest>

@@ -15,7 +15,7 @@ class SelectionActivity : AppCompatActivity() {
 
         val buttonFunction = findViewById<Button>(R.id.button_function)
         buttonFunction.setOnClickListener {
-            val intent = Intent(this, FunctionClassify::class.java)
+            val intent = Intent(this, FunctionActivity::class.java)
             startActivity(intent)
         }
 

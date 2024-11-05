@@ -1,13 +1,9 @@
 package com.example.groupify
 
-import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.os.Bundle
-import android.widget.GridLayout
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.groupify.R
 import java.io.File
 
 class FolderViewActivity : AppCompatActivity() {

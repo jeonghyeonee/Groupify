@@ -1,19 +1,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/appIcon"
+        android:id="@+id/appIconImageView"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="8dp"/>
+        android:scaleType="centerCrop"
+        android:layout_gravity="center" />
 
     <TextView
-        android:id="@+id/appName"
+        android:id="@+id/appNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="앱 이름"
-        android:textSize="16sp"/>
+        android:gravity="center"
+        android:textSize="12sp"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:layout_marginTop="4dp" />
 </LinearLayout>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">127.0.0.1</domain> <!-- 로컬 테스트용 -->
+        <domain includeSubdomains="true">192.168.0.3</domain> <!-- 로컬 네트워크 IP 사용 시 -->
+        <domain includeSubdomains="true">10.50.29.32</domain> <!-- 로컬 네트워크 IP 사용 시 -->
+        <domain includeSubdomains="true">10.50.35.193</domain> <!-- 로컬 네트워크 IP 사용 시 -->
+        <domain includeSubdomains="true">192.168.0.101</domain> <!-- 로컬 네트워크 IP 사용 시 -->
+    </domain-config>
+</network-security-config>
