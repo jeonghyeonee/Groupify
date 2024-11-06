@@ -1,0 +1,20 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 여기에 homeContainer를 정의 -->
+    <GridLayout
+        android:id="@+id/homeContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:columnCount="4"
+        android:rowCount="5"
+        android:padding="10dp"
+        android:orientation="horizontal">
+        <!-- 동적으로 폴더와 앱 아이콘이 추가될 공간 -->
+    </GridLayout>
+
+</LinearLayout>

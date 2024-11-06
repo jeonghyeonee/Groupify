@@ -1,8 +1,24 @@
+<<<<<<< HEAD
+=======
 <!-- item_app.xml -->
+>>>>>>> 88be2f69d17b9ecd041c08b58e43434b968c5851
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+<<<<<<< HEAD
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/appIconImageView"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:scaleType="centerCrop"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:id="@+id/appNameTextView"
+=======
     android:gravity="center"
     android:padding="8dp">
 
@@ -14,10 +30,16 @@
 
     <TextView
         android:id="@+id/appLabel"
+>>>>>>> 88be2f69d17b9ecd041c08b58e43434b968c5851
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="12sp"
+<<<<<<< HEAD
+        android:maxLines="1"
+        android:ellipsize="end"
+=======
         android:textColor="@android:color/white"
+>>>>>>> 88be2f69d17b9ecd041c08b58e43434b968c5851
         android:layout_marginTop="4dp" />
 </LinearLayout>
