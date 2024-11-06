@@ -1,11 +1,7 @@
 package com.example.groupify
 
-<<<<<<< HEAD
-
-=======
 import android.Manifest
 import android.app.AlertDialog
->>>>>>> 88be2f69d17b9ecd041c08b58e43434b968c5851
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
@@ -67,12 +63,6 @@ class SelectionActivity : AppCompatActivity() {
         deviceId = Secure.getString(contentResolver, Secure.ANDROID_ID)
 
 
-<<<<<<< HEAD
-        val buttonFunction = findViewById<Button>(R.id.button_function)
-        buttonFunction.setOnClickListener {
-            val intent = Intent(this, FunctionActivity::class.java)
-            startActivity(intent)
-=======
         syncContainer.setOnClickListener {
             if (!isSynced) {
                 showSyncDialog() // 업데이트 전에는 AlertDialog를 띄우기
@@ -91,26 +81,20 @@ class SelectionActivity : AppCompatActivity() {
         buttonFunction.setOnClickListener {
             selectOption("function", buttonFunction, checkIconFunction)
             buttonProceed.visibility = View.VISIBLE
->>>>>>> 88be2f69d17b9ecd041c08b58e43434b968c5851
         }
 
         buttonColorRange.setOnClickListener {
-<<<<<<< HEAD
-            val intent = Intent(this, ClusterInputActivity::class.java)
-            startActivity(intent)
-=======
             selectOption("color", buttonColorRange, checkIconColor)
             buttonProceed.visibility = View.VISIBLE
         }
 
         buttonProceed.setOnClickListener {
             val intent = when (selectedOption) {
-                "function" -> Intent(this, FunctionClassify::class.java)
+                "function" -> Intent(this, FunctionActivity::class.java)
                 "color" -> Intent(this, ColorClassify::class.java)
                 else -> null
             }
             intent?.let { startActivity(it) }
->>>>>>> 88be2f69d17b9ecd041c08b58e43434b968c5851
         }
     }
 

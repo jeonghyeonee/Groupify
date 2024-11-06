@@ -73,8 +73,8 @@ class FunctionActivity : AppCompatActivity() {
                         }
 
                         // RecyclerView에 설정
-                        val clusterAdapter = ClusterAdapter(clusterDataList)
-                        recyclerView.adapter = clusterAdapter
+//                        val clusterAdapter = ClusterAdapter(clusterDataList)
+//                        recyclerView.adapter = clusterAdapter
                     } else {
                         Log.e(
                             "API_RESPONSE",

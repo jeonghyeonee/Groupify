@@ -2,7 +2,6 @@
     package="com.example.groupify">
 
     <!-- 앱에서 필요한 권한 선언 -->
-=======
 
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -35,7 +34,6 @@
         <activity android:name=".ColorClassify" android:exported="true" />
         <activity android:name=".SelectionActivity" android:exported="true" android:theme="@style/Theme.AppCompat.Light.NoActionBar"> </activity>
         <activity android:name=".DeployActivity" android:exported="true" />
-        <activity android:name=".ColorRangeActivity" android:exported="true" />
 
         <activity
             android:name=".FolderLauncherActivity"
@@ -48,8 +46,6 @@
         </activity>
 
 
-
-        <activity android:name=".FunctionClassify" android:exported="true" />
 
     </application>
 </manifest>
