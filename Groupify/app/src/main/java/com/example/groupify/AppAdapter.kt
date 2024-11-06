@@ -6,11 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+import com.example.groupify.models.AppData
 
-class AppAdapter(
-    private val apps: List<AppData> // ClusterData 대신 List<AppData>로 변경
-) : RecyclerView.Adapter<AppAdapter.AppViewHolder>() {
+class AppAdapter(private val appList: List<AppData>) : RecyclerView.Adapter<AppAdapter.AppViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_app, parent, false)
@@ -18,18 +16,19 @@ class AppAdapter(
     }
 
     override fun onBindViewHolder(holder: AppViewHolder, position: Int) {
-        holder.bind(apps[position])
+        val appData = appList[position]
+        holder.bind(appData)
     }
 
-    override fun getItemCount() = apps.size
+    override fun getItemCount(): Int = appList.size
 
-    inner class AppViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val appIconImageView: ImageView = view.findViewById(R.id.appIconImageView)
-        private val appNameTextView: TextView = view.findViewById(R.id.appNameTextView)
+    inner class AppViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val appIcon: ImageView = itemView.findViewById(R.id.appIcon)
+        private val appLabel: TextView = itemView.findViewById(R.id.appLabel)
 
         fun bind(appData: AppData) {
-            appNameTextView.text = appData.name
-            Glide.with(itemView.context).load(appData.iconUrl).into(appIconImageView)
+            appIcon.setImageDrawable(appData.appIcon)
+            appLabel.text = appData.appName
         }
     }
 }

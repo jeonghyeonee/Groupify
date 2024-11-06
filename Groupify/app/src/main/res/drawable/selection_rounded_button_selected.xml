@@ -1,0 +1,27 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shadow Layer for Depth -->
+    <item android:bottom="6dp" android:right="6dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#E0E0E0" /> <!-- Shadow color -->
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- Background with Blue Border -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#F7F7F7" /> <!-- Main light gray color -->
+            <stroke android:width="3dp" android:color="#4b5ae4" /> <!-- Blue border -->
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+
+    <!-- Semi-Transparent Blue Overlay -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#dee1ff" /> <!-- Semi-transparent blue overlay -->
+            <stroke android:width="3dp" android:color="#4b5ae4" />
+            <corners android:radius="16dp" />
+        </shape>
+    </item>
+</layer-list>

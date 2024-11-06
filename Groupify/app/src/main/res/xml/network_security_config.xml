@@ -6,5 +6,6 @@
         <domain includeSubdomains="true">10.50.29.32</domain> <!-- 로컬 네트워크 IP 사용 시 -->
         <domain includeSubdomains="true">10.50.35.193</domain> <!-- 로컬 네트워크 IP 사용 시 -->
         <domain includeSubdomains="true">192.168.0.101</domain> <!-- 로컬 네트워크 IP 사용 시 -->
+        <domain includeSubdomains="true">ec2-13-125-56-70.ap-northeast-2.compute.amazonaws.com</domain>
     </domain-config>
 </network-security-config>

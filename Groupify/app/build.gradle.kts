@@ -18,10 +18,10 @@ android {
         targetSdk = 33
         versionCode = 1
         versionName = "1.0"
+        vectorDrawables.useSupportLibrary = true
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // local.properties 파일에서 sdk.dir 값을 읽어와서 BuildConfig에 추가
         val localPropertiesFile = File(rootDir, "local.properties")
         if (localPropertiesFile.exists()) {
             val properties = Properties().apply {
@@ -66,7 +66,24 @@ android {
     }
 }
 
+
 dependencies {
+    // Firebase BoM: 모든 Firebase 라이브러리 버전 관리를 일관되게 함
+    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+
+    // Firebase 및 Google Play 서비스
+    implementation("com.google.firebase:firebase-auth-ktx")
+    implementation("com.google.firebase:firebase-database-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-appcheck-playintegrity")
+
+    // 이미지 로딩 및 Glide
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+
+    // AndroidX 및 기타 라이브러리
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
@@ -97,9 +114,27 @@ dependencies {
     implementation(kotlin("script-runtime"))
 
     // Testing dependencies
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+
+    // JSON 파싱
+    implementation("com.google.code.gson:gson:2.8.8")
+
+    // Retrofit 및 Gson 변환기
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // Kotlin Runtime
+    implementation(kotlin("script-runtime"))
+
+    // 테스트 라이브러리
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.0") // 최신 버전을 확인하고 사용할 수도 있습니다.
+    // 애니메이션 라이브러리
+    implementation("com.airbnb.android:lottie:4.2.2")
+
+    // dotLottie 라이브러리 추가
+    // implementation("com.github.LottieFiles:dotlottie-android:0.0.3")
 }
