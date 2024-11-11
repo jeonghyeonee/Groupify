@@ -1,0 +1,79 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/clusterSelectLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="클러스터 개수를 선택하세요"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:paddingBottom="24dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <!-- 클러스터링 선택 버튼 -->
+        <Button
+            android:id="@+id/btnCluster4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4로 클러스터링" />
+
+        <Button
+            android:id="@+id/btnCluster5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5로 클러스터링" />
+
+        <Button
+            android:id="@+id/btnCluster6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6으로 클러스터링" />
+
+        <!-- 나머지 버튼들도 동일하게 추가 -->
+        <Button
+            android:id="@+id/btnCluster7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7로 클러스터링" />
+
+        <Button
+            android:id="@+id/btnCluster8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8로 클러스터링" />
+
+        <Button
+            android:id="@+id/btnCluster9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="9로 클러스터링" />
+
+        <Button
+            android:id="@+id/btnCluster10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10으로 클러스터링" />
+
+        <Button
+            android:id="@+id/btnCluster11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="11로 클러스터링" />
+
+        <Button
+            android:id="@+id/btnCluster12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="12로 클러스터링" />
+    </LinearLayout>
+</LinearLayout>

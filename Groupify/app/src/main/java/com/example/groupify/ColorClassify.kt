@@ -1,5 +1,6 @@
 package com.example.groupify
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
@@ -12,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import okhttp3.*
+import okhttp3.MediaType.Companion.toMediaType
 import org.json.JSONObject
 import java.io.IOException
 
@@ -75,7 +77,7 @@ class ColorClassify : AppCompatActivity() {
             put("device_id", deviceId)
         }
 
-        val body = RequestBody.create(MediaType.get("application/json; charset=utf-8"), jsonBody.toString())
+        val body = RequestBody.create("application/json; charset=utf-8".toMediaType(), jsonBody.toString())
         val request = Request.Builder().url(url).post(body).build()
 
         client.newCall(request).enqueue(object : Callback {
@@ -87,7 +89,7 @@ class ColorClassify : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call, response: Response) {
-                val responseData = response.body()?.string()
+                val responseData = response.body?.string()
                 if (responseData != null) {
                     runOnUiThread {
                         Toast.makeText(this@ColorClassify, "서버 응답 완료", Toast.LENGTH_SHORT).show()

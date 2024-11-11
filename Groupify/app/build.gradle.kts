@@ -5,6 +5,8 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
+    id("kotlin-kapt")  // kapt 플러그인 추가
+
 }
 
 android {
@@ -80,6 +82,7 @@ dependencies {
 
     // 이미지 로딩 및 Glide
     implementation("com.github.bumptech.glide:glide:4.12.0")
+    implementation("com.google.androidbrowserhelper:androidbrowserhelper:2.5.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 
     // AndroidX 및 기타 라이브러리
@@ -87,8 +90,36 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("androidx.gridlayout:gridlayout:1.0.0")
+
     implementation("androidx.palette:palette-ktx:1.0.0")
     implementation("androidx.recyclerview:recyclerview:1.2.1")
+    implementation("org.jsoup:jsoup:1.13.1")
+    implementation("com.android.volley:volley:1.2.1")
+
+    // Firebase Dependencies
+    implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-storage-ktx")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation("com.google.firebase:firebase-auth-ktx")
+
+    // Retrofit for network requests
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // RecyclerView
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+
+    // Glide for image loading
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    kapt("com.github.bumptech.glide:compiler:4.12.0")
+
+    // Kotlin script runtime
+    implementation(kotlin("script-runtime"))
+
+    // Testing dependencies
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
 
     // JSON 파싱
     implementation("com.google.code.gson:gson:2.8.8")
@@ -105,6 +136,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0") // 최신 버전을 확인하고 사용할 수도 있습니다.
     // 애니메이션 라이브러리
     implementation("com.airbnb.android:lottie:4.2.2")
 

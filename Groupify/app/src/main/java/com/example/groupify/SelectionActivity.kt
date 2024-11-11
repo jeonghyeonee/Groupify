@@ -90,7 +90,7 @@ class SelectionActivity : AppCompatActivity() {
 
         buttonProceed.setOnClickListener {
             val intent = when (selectedOption) {
-                "function" -> Intent(this, FunctionClassify::class.java)
+                "function" -> Intent(this, FunctionActivity::class.java)
                 "color" -> Intent(this, ColorClassify::class.java)
                 else -> null
             }

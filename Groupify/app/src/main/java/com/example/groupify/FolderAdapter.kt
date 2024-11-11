@@ -1,24 +1,20 @@
 package com.example.groupify
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.groupify.models.AppData
 
 class FolderAdapter(
     private val folderMap: Map<Int, List<AppData>>,
-    private val onFolderClick: (Int, List<AppData>) -> Unit
+    private val onFolderClick: (Int, List<AppData>) -> Unit // 폴더 클릭 시 호출될 콜백
 ) : RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
-
-    private var folderNames: List<String> = emptyList()
-
-    fun updateFolderNames(namesList: List<String>) {
-        folderNames = namesList
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FolderViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_folder, parent, false)
@@ -28,35 +24,44 @@ class FolderAdapter(
     override fun onBindViewHolder(holder: FolderViewHolder, position: Int) {
         val clusterNumber = folderMap.keys.elementAt(position)
         val appList = folderMap[clusterNumber] ?: emptyList()
-        val folderName = folderNames.getOrNull(position) ?: "Folder $clusterNumber"
-        holder.bind(clusterNumber, appList, folderName)
+
+        holder.bind(clusterNumber, appList)
     }
 
     override fun getItemCount(): Int = folderMap.size
 
     inner class FolderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val folderPreview1: ImageView = itemView.findViewById(R.id.folderPreview1)
-        private val folderPreview2: ImageView = itemView.findViewById(R.id.folderPreview2)
+        private val folderPreviewGrid: GridLayout = itemView.findViewById(R.id.folderPreviewGrid)
         private val folderLabel: TextView = itemView.findViewById(R.id.folderLabel)
 
-        fun bind(clusterNumber: Int, appList: List<AppData>, folderName: String) {
-            folderLabel.text = folderName
-            itemView.setBackgroundResource(R.drawable.ic_folder_background)
+        fun bind(clusterNumber: Int, appList: List<AppData>) {
+            // 폴더 이름 설정
+            folderLabel.text = "Folder $clusterNumber"
 
-            if (appList.isNotEmpty()) {
-                folderPreview1.setImageDrawable(appList[0].appIcon)
-                folderPreview1.visibility = View.VISIBLE
-            } else {
-                folderPreview1.visibility = View.GONE
+            // 폴더의 앱 아이콘을 최대 9개까지 그리드로 설정
+            folderPreviewGrid.removeAllViews()
+
+            val maxIcons = 9 // 최대 9개 아이콘 표시
+            val iconCount = minOf(appList.size, maxIcons)
+
+            try {
+                for (i in 0 until iconCount) {
+                    val appIconView = ImageView(itemView.context).apply {
+                        layoutParams = GridLayout.LayoutParams().apply {
+                            width = 50 // 원하는 크기
+                            height = 50
+                        }
+                        setImageDrawable(appList[i].appIcon)
+                        scaleType = ImageView.ScaleType.CENTER_CROP
+                    }
+                    folderPreviewGrid.addView(appIconView) // 그리드에 아이콘 추가
+                }
+            } catch (e: Exception) {
+                Log.e("FolderAdapter", "아이콘 추가 중 오류 발생", e)
+                Toast.makeText(itemView.context, "아이콘 추가 중 오류 발생", Toast.LENGTH_SHORT).show()
             }
 
-            if (appList.size > 1) {
-                folderPreview2.setImageDrawable(appList[1].appIcon)
-                folderPreview2.visibility = View.VISIBLE
-            } else {
-                folderPreview2.visibility = View.GONE
-            }
-
+            // 폴더 클릭 시 앱 목록을 보여줌
             itemView.setOnClickListener {
                 onFolderClick(clusterNumber, appList)
             }
