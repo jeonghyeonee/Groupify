@@ -33,8 +33,9 @@
         android:layout_height="wrap_content"
         android:textColor="#4b5ae4"
         android:textSize="20sp"
+        android:textStyle="bold"
         android:visibility="gone"
-        android:layout_marginTop="50dp"/> <!-- 기본적으로 숨김 상태 -->
+        android:layout_marginTop="70dp"/> <!-- 기본적으로 숨김 상태 -->
 
     <!-- 확인 버튼 -->
     <Button

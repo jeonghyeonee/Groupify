@@ -88,7 +88,7 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.palette:palette-ktx:1.0.0")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
 
     // JSON 파싱
     implementation("com.google.code.gson:gson:2.8.8")

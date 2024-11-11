@@ -46,7 +46,7 @@ class ColorClassify : AppCompatActivity() {
                 if (kValue in 4..12) {
                     // 유효한 값일 경우 메시지 표시
                     feedbackText.visibility = View.VISIBLE
-                    feedbackText.text = "좋아요! $kValue 개로 나누어 드릴게요."
+                    feedbackText.text = "좋아요! $kValue 개로 나누어 드릴게요 \uD83D\uDE04"
                     sendDataToServer(kValue, deviceId)
                 } else {
                     // 유효하지 않은 값일 경우 경고 모달 표시

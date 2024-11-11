@@ -1,0 +1,6 @@
+<!-- res/drawable/rounded_folder.xml -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="@android:color/darker_gray" />
+    <corners android:radius="24dp" /> <!-- 원형을 위해 반지름 설정 -->
+    <padding android:left="8dp" android:right="8dp" android:top="8dp" android:bottom="8dp" />
+</shape>

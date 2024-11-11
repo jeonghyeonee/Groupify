@@ -50,13 +50,14 @@
         <!-- Join Now 버튼 -->
         <Button
             android:id="@+id/joinNowButton"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
             android:layout_marginBottom="100dp"
             android:backgroundTint="#4b5ae4"
             android:background="@drawable/border_radius"
             android:text="시작하기"
             android:textColor="#ffffff"
+            android:layout_marginTop="30dp"
             android:visibility="invisible" />
 
     </LinearLayout>

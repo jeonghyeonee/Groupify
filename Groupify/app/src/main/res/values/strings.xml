@@ -3,4 +3,9 @@
     <string name="app_icon">App Icon</string>
     <string name="welcome_message_1">폴더 정리 지겨우셨죠?</string>
     <string name="welcome_message_2"><![CDATA[<font color="#0000FF">5분</font> 안에 대신 해드릴게요!]]></string>
+    <string name="launcher_background">Launcher Background</string>
+    <string name="app_icon_desc">App Icon</string>
+    <string name="folder_icon_desc">Folder Icon</string>
+    <string name="preview_icon_1">Preview Icon 1</string>
+    <string name="preview_icon_2">Preview Icon 2</string>
 </resources>

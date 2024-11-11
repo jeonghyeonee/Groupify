@@ -1,28 +1,43 @@
+<!-- res/layout/item_folder.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp"
-    android:background="@drawable/ic_folder_background">
+    android:padding="8dp">
 
+    <!-- 폴더 배경 -->
+    <ImageView
+        android:id="@+id/folderIcon"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/rounded_folder"
+        android:contentDescription="@string/folder_icon_desc"
+        android:alpha="0.7" />
+
+    <!-- 첫 번째 앱 아이콘 미리 보기 -->
+    <ImageView
+        android:id="@+id/folderPreview1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/preview_icon_1" />
+
+    <!-- 두 번째 앱 아이콘 미리 보기 -->
+    <ImageView
+        android:id="@+id/folderPreview2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/preview_icon_2" />
+
+    <!-- 폴더 이름 표시 -->
     <TextView
         android:id="@+id/folderLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Folder"
-        android:textSize="16sp"
-        android:paddingBottom="4dp" />
-
-    <ImageView
-        android:id="@+id/folderPreview1"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="4dp"
-        android:visibility="gone" />
-
-    <ImageView
-        android:id="@+id/folderPreview2"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:visibility="gone" />
+        android:gravity="center"
+        android:textSize="12sp"
+        android:textColor="@android:color/black" />
 </LinearLayout>

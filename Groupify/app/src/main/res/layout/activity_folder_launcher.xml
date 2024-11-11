@@ -40,4 +40,14 @@
             android:text="색 이름"
             android:layout_marginStart="16dp" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="앱 종료하기"
+        android:padding="16dp"
+        android:layout_marginTop="16dp"/>
+
 </LinearLayout>
