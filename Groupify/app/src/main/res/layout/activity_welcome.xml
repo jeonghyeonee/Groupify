@@ -55,7 +55,7 @@
             android:layout_marginBottom="100dp"
             android:backgroundTint="#4b5ae4"
             android:background="@drawable/border_radius"
-            android:text="시작하기"
+            android:text="Get Started"
             android:textColor="#ffffff"
             android:layout_marginTop="30dp"
             android:visibility="invisible" />

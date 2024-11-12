@@ -1,45 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true">
 
     <!-- RecyclerView (앱 폴더를 표시하는 부분) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/folderRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         android:layout_margin="16dp" />
 
-    <!-- '이름별' 버튼 (하단 왼쪽에 배치) -->
-    <Button
-        android:id="@+id/nameButton"
+    <!-- 버튼들을 한 줄로 배치 (LinearLayout 사용) -->
+
+    <!-- '배치하기' 버튼은 아래 줄에 배치 -->
+    <LinearLayout
+        android:id="@+id/buttonLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="이름별"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/folderRecyclerView"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true">
+
+        <!-- '이름별' 버튼 (하단 왼쪽에 배치) -->
+        <Button
+            android:id="@+id/nameButton"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/border_radius"
+            android:backgroundTint="#EAEAEA"
+            android:text="Name"
+            android:textColor="#4C4C4C"
+            android:textSize="18dp" />
+
+        <!-- '이모티콘' 버튼 (하단 가운데에 배치) -->
+        <Button
+            android:id="@+id/emojiButton"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/border_radius"
+            android:backgroundTint="#EAEAEA"
+            android:text="Emoji"
+            android:textColor="#4C4C4C"
+            android:textSize="18dp" />
+
+        <!-- '과일' 버튼 (하단 오른쪽에 배치) -->
+        <Button
+            android:id="@+id/fruitButton"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_radius"
+            android:backgroundTint="#EAEAEA"
+            android:text="Fruit"
+            android:textColor="#4C4C4C"
+            android:textSize="18dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#4b5ae4"
+        android:background="@drawable/border_radius"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:text="Apply Launcher"
+        android:layout_below="@id/buttonLayout"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="16dp" />
-
-    <!-- '이모티콘' 버튼 (하단 오른쪽에 배치) -->
-    <Button
-        android:id="@+id/emojiButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="이모티콘"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@id/nameButton"
-        android:layout_marginBottom="16dp" />
-
-
-    <Button
-        android:id="@+id/fruitButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="과일"
-        android:layout_alignParentBottom="true"
-        android:layout_toEndOf="@id/emojiButton"
-        android:layout_marginBottom="16dp" />
-
-
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="30dp"/>
 
 </RelativeLayout>

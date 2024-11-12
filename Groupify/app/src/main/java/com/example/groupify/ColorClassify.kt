@@ -48,14 +48,14 @@ class ColorClassify : AppCompatActivity() {
                 if (kValue in 4..10) {
                     // 유효한 값일 경우 메시지 표시
                     feedbackText.visibility = View.VISIBLE
-                    feedbackText.text = "좋아요! $kValue 개로 나누어 드릴게요 \uD83D\uDE04"
+                    feedbackText.text = "Great! We will categorize it into $kValue folders \uD83D\uDE04"
                     sendDataToServer(kValue, deviceId)
                 } else {
                     // 유효하지 않은 값일 경우 경고 모달 표시
-                    showAlert("4-10 사이의 숫자만 입력해주세요!")
+                    showAlert("Please enter a number between 4 and 10 !")
                 }
             } else {
-                Toast.makeText(this, "클러스터 개수를 입력하세요.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please enter the number of clusters.", Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -63,9 +63,9 @@ class ColorClassify : AppCompatActivity() {
     // 경고 모달 표시 메서드
     private fun showAlert(message: String) {
         AlertDialog.Builder(this)
-            .setTitle("유효하지 않은 입력")
+            .setTitle("Invalid input")
             .setMessage(message)
-            .setPositiveButton("확인", null)
+            .setPositiveButton("Confirm", null)
             .show()
     }
 
@@ -84,7 +84,7 @@ class ColorClassify : AppCompatActivity() {
             override fun onFailure(call: Call, e: IOException) {
                 Log.e("suacheck", "서버 요청 실패: ${e.message}")
                 runOnUiThread {
-                    Toast.makeText(this@ColorClassify, "서버 요청 실패", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@ColorClassify, "Server request failed", Toast.LENGTH_SHORT).show()
                 }
             }
 
@@ -92,7 +92,7 @@ class ColorClassify : AppCompatActivity() {
                 val responseData = response.body?.string()
                 if (responseData != null) {
                     runOnUiThread {
-                        Toast.makeText(this@ColorClassify, "서버 응답 완료", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@ColorClassify, "Success ! ", Toast.LENGTH_SHORT).show()
                         // 서버 응답 후 'FolderLauncherActivity'로 데이터 전달
                         navigateToFolderLauncherActivity(responseData)
                     }
@@ -128,7 +128,7 @@ class ColorClassify : AppCompatActivity() {
 
         } catch (e: Exception) {
             Log.e("suacheck", "클러스터 데이터 파싱 오류", e)
-            Toast.makeText(this, "클러스터 데이터 파싱 오류", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Cluster data parsing error", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -152,7 +152,7 @@ class ColorClassify : AppCompatActivity() {
             }
         } catch (e: Exception) {
             Log.e("suacheck", "클러스터 데이터 파싱 오류", e)
-            Toast.makeText(this, "클러스터 데이터 파싱 오류", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Cluster data parsing error", Toast.LENGTH_SHORT).show()
         }
     }
 }

@@ -5,12 +5,14 @@
     android:gravity="center"
     android:padding="8dp">
 
+    <!-- 앱 아이콘 -->
     <ImageView
         android:id="@+id/appIcon"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:contentDescription="@string/app_icon" />
 
+    <!-- 앱 이름 -->
     <TextView
         android:id="@+id/appLabel"
         android:layout_width="wrap_content"

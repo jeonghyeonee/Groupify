@@ -8,11 +8,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="어떤 방식으로 정리해드릴까요?"
+        android:text="How would you like us to organizae it?"
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="#4b5ae4"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="27dp"/>
 
     <FrameLayout
         android:id="@+id/button_function_container"
@@ -44,7 +44,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="기능별로 분류해드려요"
+                    android:text="Sort by Functionality"
                     android:textStyle="bold"
                     android:textColor="#000000"
                     android:textSize="22sp" />
@@ -52,7 +52,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="실용적으로 앱을 관리할 수 있어요"
+                    android:text="Manage your apps more efficiently"
                     android:textSize="14sp"
                     android:textColor="#808080"
                     android:layout_marginTop="7dp" />
@@ -103,7 +103,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="색깔별로 분류해드려요"
+                    android:text="Sort by Color"
                     android:textStyle="bold"
                     android:textColor="#000000"
                     android:textSize="22sp" />
@@ -111,7 +111,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="알록달록 보기 좋아요"
+                    android:text="It's colorful and looks great"
                     android:textSize="14sp"
                     android:textColor="#808080"
                     android:layout_marginTop="7dp" />
@@ -158,7 +158,7 @@
             android:id="@+id/sync_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="새로운 앱이 있어요. 업데이트해주세요."
+            android:text="There's a new app. Please update it."
             android:textColor="#808080"
             android:layout_marginStart="8dp"
             android:textSize="16sp" />
@@ -171,7 +171,7 @@
         android:layout_height="50dp"
         android:backgroundTint="#4b5ae4"
         android:background="@drawable/border_radius"
-        android:text="분류하러 가기  >"
+        android:text="Go to Sort  >"
         android:textSize="20dp"
         android:textColor="#ffffff"
         android:visibility="invisible"
