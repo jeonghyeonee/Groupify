@@ -1,5 +1,6 @@
 package com.example.groupify
 
+import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -92,8 +93,8 @@ class ColorClassify : AppCompatActivity() {
                 if (responseData != null) {
                     runOnUiThread {
                         Toast.makeText(this@ColorClassify, "서버 응답 완료", Toast.LENGTH_SHORT).show()
-                        // 데이터를 받아오는 부분만 확인
-                        logClusterData(responseData)
+                        // 서버 응답 후 'FolderLauncherActivity'로 데이터 전달
+                        navigateToFolderLauncherActivity(responseData)
                     }
                 } else {
                     Log.e("suacheck", "서버 응답 없음")
@@ -101,6 +102,36 @@ class ColorClassify : AppCompatActivity() {
             }
         })
     }
+
+    // 'FolderLauncherActivity'로 데이터 전달 및 화면 이동
+    private fun navigateToFolderLauncherActivity(responseData: String) {
+        try {
+            // 서버 응답에서 'apps' 배열을 파싱
+            val jsonObject = JSONObject(responseData)
+            val appsArray: JSONArray = jsonObject.getJSONArray("apps")
+
+            // 각 앱에 대해 클러스터 및 색상 출력
+            for (i in 0 until appsArray.length()) {
+                val appObject = appsArray.getJSONObject(i)
+                val appName = appObject.getString("app_name")
+                val predictedCluster = appObject.getInt("predicted_cluster")
+                val predictedColor = appObject.getString("predicted_color")
+
+                // 디버깅용 로그 출력
+                Log.d("suacheck", "App: $appName, Predicted Cluster: $predictedCluster, Predicted Color: $predictedColor")
+            }
+
+            // FolderLauncherActivity로 데이터를 넘겨서 화면을 전환
+            val intent = Intent(this, FolderLauncherActivity::class.java)
+            intent.putExtra("responseData", responseData) // 응답 데이터를 전달
+            startActivity(intent)
+
+        } catch (e: Exception) {
+            Log.e("suacheck", "클러스터 데이터 파싱 오류", e)
+            Toast.makeText(this, "클러스터 데이터 파싱 오류", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
     // 클러스터 데이터 로그로 출력
     private fun logClusterData(responseData: String) {
