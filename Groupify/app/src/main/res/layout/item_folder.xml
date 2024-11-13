@@ -12,8 +12,8 @@
 
         <!-- 폴더 배경 (둥근 모서리 불투명한 사각형) -->
         <View
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@drawable/rounded_folder" /> <!-- drawable에 정의된 둥근 배경 사용 -->
 
@@ -35,5 +35,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="12sp"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:layout_gravity="center" />
 </LinearLayout>

@@ -4,12 +4,23 @@
     android:layout_height="match_parent"
     android:layout_centerHorizontal="true">
 
+    <!-- 뒤로가기 버튼 -->
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_back_arrow2"   />
+
     <!-- RecyclerView (앱 폴더를 표시하는 부분) -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/folderRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_margin="16dp" />
+        android:layout_height="450dp"
+        android:layout_margin="16dp"
+        android:layout_below="@id/backButton"/>
 
     <!-- 버튼들을 한 줄로 배치 (LinearLayout 사용) -->
 
@@ -19,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/folderRecyclerView"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="55dp"
         android:layout_marginBottom="16dp"
         android:orientation="horizontal"
         android:layout_centerHorizontal="true">

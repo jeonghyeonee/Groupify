@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -34,6 +35,12 @@ class ColorClassify : AppCompatActivity() {
         // Device ID 가져오기
         deviceId = Settings.Secure.getString(contentResolver, Settings.Secure.ANDROID_ID)
         Log.d("suacheck", "Device ID: $deviceId")
+
+        val backButton = findViewById<ImageButton>(R.id.backButton)
+        backButton.setOnClickListener {
+            onBackPressed()  // 뒤로가기 버튼 클릭 시 이전 액티비티로 돌아가기
+        }
+
 
         clusterInput = findViewById(R.id.editTextCluster)
         confirmButton = findViewById(R.id.buttonConfirm)

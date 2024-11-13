@@ -1,10 +1,15 @@
 package com.example.groupify
 
+import android.app.WallpaperManager
+import android.content.ClipData
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.GridLayout
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -12,6 +17,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.groupify.models.AppData
@@ -37,11 +44,38 @@ class LauncherActivity : AppCompatActivity() {
         folderRecyclerView = findViewById(R.id.folderRecyclerView)
         folderRecyclerView.layoutManager = GridLayoutManager(this, 3) // 3개의 폴더를 한 줄에 배치
 
+
+        val wallpaperManager = WallpaperManager.getInstance(this)
+        val currentWallpaper = wallpaperManager.drawable // 현재 배경화면을 가져옴
+        val backgroundImageView = findViewById<ImageView>(R.id.backgroundImageView)
+        backgroundImageView.setImageDrawable(currentWallpaper)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            val wallpaperDrawable = wallpaperManager.drawable
+            backgroundImageView.setImageDrawable(wallpaperDrawable)  // ImageView에 설정
+        } else {
+            val wallpaperBitmap = wallpaperManager.drawable?.toBitmap()
+            backgroundImageView.setImageBitmap(wallpaperBitmap)
+        }
+
+        val appIcon = findViewById<ImageView>(R.id.appIcon)
+
+        // 아이콘 드래그 가능한 설정
+        appIcon.setOnLongClickListener { view ->
+            val clipData = ClipData.newPlainText("app", view.tag.toString())
+            val dragShadowBuilder = View.DragShadowBuilder(view)
+            view.startDrag(clipData, dragShadowBuilder, null, 0)
+            true
+        }
+
+
+
         // 서버에서 받은 responseData를 파싱하여 폴더 생성
         responseData?.let {
             displayFolders(it, isNameMode, isFruitMode)
         }
     }
+
 
     private fun displayFolders(responseData: String, isNameMode: Boolean, isFruitMode: Boolean) {
         val folderMap = mutableMapOf<String, MutableList<AppData>>() // predicted_color로 그룹화

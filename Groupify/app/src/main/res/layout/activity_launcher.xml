@@ -3,12 +3,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <!-- 배경을 위한 ImageView -->
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"/>
+
+
     <!-- 폴더를 표시할 RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/folderRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        />
 
 
 </RelativeLayout>

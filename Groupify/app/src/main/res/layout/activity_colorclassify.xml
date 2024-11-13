@@ -6,6 +6,15 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_back_arrow2"   />
+
     <!-- 안내 텍스트 -->
     <TextView
         android:layout_width="wrap_content"
@@ -14,7 +23,8 @@
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="#000000"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/backButton"/>
 
     <TextView
         android:layout_width="wrap_content"

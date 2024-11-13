@@ -11,6 +11,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.GridLayout
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -38,6 +39,12 @@ class FolderLauncherActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_folder_launcher)
+
+        val backButton = findViewById<ImageButton>(R.id.backButton)
+        backButton.setOnClickListener {
+            onBackPressed()  // 뒤로가기 버튼 클릭 시 이전 액티비티로 돌아가기
+        }
+
 
         // 버튼 초기화
         nameButton = findViewById(R.id.nameButton)
@@ -148,31 +155,34 @@ class FolderLauncherActivity : AppCompatActivity() {
 
 
     private fun showAppList(predictedColor: String, appList: List<AppData>) {
-        // 폴더 내 앱 목록을 보여주는 로직
-        // 이제 3x3 형태로 아이콘과 이름을 그리드로 표시
-        val dialog = AlertDialog.Builder(this)
-        dialog.setTitle("Apps in this Folder")
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.activity_folder_launcher_folderview, null)
+        val folderTitle: TextView = dialogView.findViewById(R.id.folderTitle)
+        val gridLayout: GridLayout = dialogView.findViewById(R.id.gridLayout)
 
-        val gridLayout = GridLayout(this)
-        gridLayout.orientation = GridLayout.HORIZONTAL
-        gridLayout.columnCount = 3 // 3개의 아이콘과 이름을 한 줄에 배치
+        folderTitle.text = predictedColor // 폴더 이름을 설정
+
+        // 3x3 형태로 그리드 아이템 추가 (필요에 맞게 3개 열을 설정)
+        gridLayout.columnCount = 3 // 3개의 컬럼 설정
+        gridLayout.rowCount = (appList.size / 3) + if (appList.size % 3 == 0) 0 else 1
 
         appList.forEachIndexed { index, app ->
             val appLayout = createAppLayout(app)
-
-            // 그리드에 배치할 때 인덱스를 고려하여 추가
             val params = GridLayout.LayoutParams()
             params.rowSpec = GridLayout.spec(index / 3)
             params.columnSpec = GridLayout.spec(index % 3)
             appLayout.layoutParams = params
-
             gridLayout.addView(appLayout)
         }
 
-        dialog.setView(gridLayout)
-        dialog.setNegativeButton("Close", null)
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setNegativeButton("Close", null)
+            .create()
+
         dialog.show()
     }
+
+
 
     private fun createAppLayout(app: AppData): LinearLayout {
         val appLayout = LayoutInflater.from(this).inflate(R.layout.item_app, null) as LinearLayout
