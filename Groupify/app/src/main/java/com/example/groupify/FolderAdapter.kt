@@ -10,6 +10,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.groupify.models.AppData
+
+
 class FolderAdapter(
     private val folderMap: MutableMap<String, MutableList<AppData>>, // 'predicted_color'를 키로 사용
     private var isNameMode: Boolean, // 이름 모드

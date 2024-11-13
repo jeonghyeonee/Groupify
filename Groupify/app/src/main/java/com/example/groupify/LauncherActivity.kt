@@ -58,15 +58,15 @@ class LauncherActivity : AppCompatActivity() {
             backgroundImageView.setImageBitmap(wallpaperBitmap)
         }
 
-        val appIcon = findViewById<ImageView>(R.id.appIcon)
+        //val appIcon = findViewById<ImageView>(R.id.appIcon)
 
         // 아이콘 드래그 가능한 설정
-        appIcon.setOnLongClickListener { view ->
-            val clipData = ClipData.newPlainText("app", view.tag.toString())
-            val dragShadowBuilder = View.DragShadowBuilder(view)
-            view.startDrag(clipData, dragShadowBuilder, null, 0)
-            true
-        }
+//        appIcon.setOnLongClickListener { view ->
+//            val clipData = ClipData.newPlainText("app", view.tag.toString())
+//            val dragShadowBuilder = View.DragShadowBuilder(view)
+//            view.startDrag(clipData, dragShadowBuilder, null, 0)
+//            true
+//        }
 
 
 
@@ -96,64 +96,75 @@ class LauncherActivity : AppCompatActivity() {
 
         // 폴더 어댑터 설정
         folderAdapter = FolderAdapter(folderMap, isNameMode, isFruitMode) { predictedColor, appList ->
-            showFolderDialog(appList)
+            showFolderDialog(predictedColor, appList) // 폴더 클릭 시 앱 목록 다이얼로그 표시
         }
         folderRecyclerView.adapter = folderAdapter
     }
 
-    private fun createFolderLayout(predictedColor: String, appList: List<AppData>, isNameMode: Boolean, isFruitMode: Boolean): LinearLayout {
-        val folderLayout = LayoutInflater.from(this).inflate(R.layout.item_folder, null) as LinearLayout
+//    private fun createFolderLayout(predictedColor: String, appList: List<AppData>, isNameMode: Boolean, isFruitMode: Boolean): LinearLayout {
+//        val folderLayout = LayoutInflater.from(this).inflate(R.layout.item_folder, null) as LinearLayout
+//
+//        // 폴더 이름 설정
+//        val folderLabel: TextView = folderLayout.findViewById(R.id.folderLabel)
+//        folderLabel.text = when {
+//            isNameMode -> predictedColor
+//            isFruitMode -> getFruitEmojiForColor(predictedColor)
+//            else -> getEmojiForColor(predictedColor)
+//        }
+//
+//        // 폴더 아이콘 설정 (기존 아이콘을 사용)
+//        val folderPreviewGrid: GridLayout = folderLayout.findViewById(R.id.folderPreviewGrid)
+//
+//        // 폴더의 앱 아이콘을 최대 9개까지 그리드로 설정
+//        folderPreviewGrid.removeAllViews()
+//        val maxIcons = 9
+//        val iconCount = minOf(appList.size, maxIcons)
+//
+//        for (i in 0 until iconCount) {
+//            val appIconView = ImageView(this).apply {
+//                layoutParams = GridLayout.LayoutParams().apply {
+//                    width = 50
+//                    height = 50
+//                }
+//                setImageDrawable(appList[i].appIcon)
+//                scaleType = ImageView.ScaleType.CENTER_CROP
+//            }
+//            folderPreviewGrid.addView(appIconView)
+//        }
+//
+//        // 폴더 클릭 시 앱 목록을 보여줌
+//        folderLayout.setOnClickListener {
+//            showFolderDialog(appList.toString())
+//        }
+//
+//        return folderLayout
+//    }
 
-        // 폴더 이름 설정
-        val folderLabel: TextView = folderLayout.findViewById(R.id.folderLabel)
-        folderLabel.text = when {
-            isNameMode -> predictedColor
-            isFruitMode -> getFruitEmojiForColor(predictedColor)
-            else -> getEmojiForColor(predictedColor)
-        }
+    private fun showFolderDialog(predictedColor: String, appList: List<AppData>) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.activity_folder_launcher_folderview, null)
+        val folderTitle: TextView = dialogView.findViewById(R.id.folderTitle)
+        val gridLayout: GridLayout = dialogView.findViewById(R.id.gridLayout)
 
-        // 폴더 아이콘 설정 (기존 아이콘을 사용)
-        val folderPreviewGrid: GridLayout = folderLayout.findViewById(R.id.folderPreviewGrid)
+        folderTitle.text = predictedColor // 폴더 이름 설정
 
-        // 폴더의 앱 아이콘을 최대 9개까지 그리드로 설정
-        folderPreviewGrid.removeAllViews()
-        val maxIcons = 9
-        val iconCount = minOf(appList.size, maxIcons)
+        // 3x3 형태로 그리드 아이템 추가
+        gridLayout.columnCount = 3
+        gridLayout.rowCount = (appList.size / 3) + if (appList.size % 3 == 0) 0 else 1
 
-        for (i in 0 until iconCount) {
-            val appIconView = ImageView(this).apply {
-                layoutParams = GridLayout.LayoutParams().apply {
-                    width = 50
-                    height = 50
-                }
-                setImageDrawable(appList[i].appIcon)
-                scaleType = ImageView.ScaleType.CENTER_CROP
-            }
-            folderPreviewGrid.addView(appIconView)
-        }
-
-        // 폴더 클릭 시 앱 목록을 보여줌
-        folderLayout.setOnClickListener {
-            showFolderDialog(appList)
-        }
-
-        return folderLayout
-    }
-
-    private fun showFolderDialog(appList: List<AppData>) {
-        val dialog = AlertDialog.Builder(this)
-        dialog.setTitle("Apps in this Folder")
-
-        val layout = LinearLayout(this)
-        layout.orientation = LinearLayout.VERTICAL
-
-        appList.forEach { app ->
+        appList.forEachIndexed { index, app ->
             val appLayout = createAppLayout(app)
-            layout.addView(appLayout)
+            val params = GridLayout.LayoutParams()
+            params.rowSpec = GridLayout.spec(index / 3)
+            params.columnSpec = GridLayout.spec(index % 3)
+            appLayout.layoutParams = params
+            gridLayout.addView(appLayout)
         }
 
-        dialog.setView(layout)
-        dialog.setNegativeButton("Close", null)
+        val dialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .setNegativeButton("Close", null)
+            .create()
+
         dialog.show()
     }
 
@@ -172,14 +183,23 @@ class LauncherActivity : AppCompatActivity() {
         appLayout.addView(imageView)
         appLayout.addView(textView)
 
-        // 앱 클릭 시 실행
+        // 앱 클릭 시 실행되도록 설정
         appLayout.setOnClickListener {
+            // 앱을 실행할 수 있는 Intent를 가져오기
             val launchIntent = packageManager.getLaunchIntentForPackage(app.packageName)
-            launchIntent?.let { startActivity(it) }
+
+            // 앱이 존재하면 실행
+            launchIntent?.let {
+                startActivity(it)
+            } ?: run {
+                // 앱이 설치되어 있지 않으면 Toast 메시지 표시
+                Toast.makeText(this, "앱을 실행할 수 없습니다.", Toast.LENGTH_SHORT).show()
+            }
         }
 
         return appLayout
     }
+
 
     private fun getEmojiForColor(color: String): String {
         return when (color) {
