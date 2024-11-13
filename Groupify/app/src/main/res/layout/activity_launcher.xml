@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <!-- 배경을 위한 ImageView -->
     <ImageView
         android:id="@+id/backgroundImageView"
@@ -12,14 +11,54 @@
         android:scaleType="centerCrop"
         android:layout_centerInParent="true"/>
 
-
     <!-- 폴더를 표시할 RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/folderRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="16dp"
-        />
+        android:layout_height="0dp"
+        android:layout_above="@id/bottomBar"
+        android:layout_alignParentTop="true"
+        android:layout_margin="16dp"/>
 
+    <!-- 하단 바 -->
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:layout_alignParentBottom="true">
+
+        <ImageView
+            android:id="@+id/callButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_call"
+            android:contentDescription="전화" />
+
+        <ImageView
+            android:id="@+id/messageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_send"
+            android:contentDescription="메시지" />
+
+        <ImageView
+            android:id="@+id/browserButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_view"
+            android:contentDescription="브라우저" />
+
+        <ImageView
+            android:id="@+id/cameraButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_camera"
+            android:contentDescription="카메라" />
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -6,8 +6,8 @@
 
     <!-- FrameLayout을 사용하여 배경과 아이콘들을 겹쳐서 배치 -->
     <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center">
 
         <!-- 폴더 배경 (둥근 모서리 불투명한 사각형) -->
@@ -21,7 +21,7 @@
         <GridLayout
             android:id="@+id/folderPreviewGrid"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:columnCount="3"
             android:rowCount="3"
             android:orientation="horizontal"
