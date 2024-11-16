@@ -55,7 +55,7 @@ class ColorClassify : AppCompatActivity() {
                 if (kValue in 4..12) {
                     // 유효한 값일 경우 메시지 표시
                     feedbackText.visibility = View.VISIBLE
-                    feedbackText.text = "Great! \n We will categorize it into $kValue folders \uD83D\uDE04"
+                    feedbackText.text = "Great! \nWe will categorize it into $kValue folders \uD83D\uDE04"
                     sendDataToServer(kValue, deviceId)
                 } else {
                     // 유효하지 않은 값일 경우 경고 모달 표시

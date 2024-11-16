@@ -12,7 +12,7 @@
 
         <!-- 폴더 배경 (둥근 모서리 불투명한 사각형) -->
         <View
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:background="@drawable/rounded_folder" />

@@ -3,35 +3,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:gravity="center">
 
-    <!-- 폴더 이름 -->
+    <!-- 폴더 이름을 표시하는 TextView -->
     <TextView
         android:id="@+id/folderTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Folder Name"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:textStyle="bold"
-        android:gravity="center"/>
+        android:textColor="#ffffff"
+        android:gravity="center"
+        android:layout_marginBottom="8dp" />
 
-    <!-- 앱 아이콘 3x3 그리드 레이아웃 -->
-    <GridLayout
-        android:id="@+id/gridLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:columnCount="3"
-        android:rowCount="3"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"/>
-
-    <!-- 닫기 버튼 -->
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Close"
+    <!-- 배경이 적용된 ViewPager2 -->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="316dp"
+        android:layout_height="316dp"
         android:layout_marginTop="16dp"
-        android:layout_gravity="center"/>
+        android:orientation="horizontal"
+        android:background="@drawable/folder_background" /> <!-- 배경을 여기서 설정 -->
 
 </LinearLayout>

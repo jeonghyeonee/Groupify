@@ -25,6 +25,7 @@ import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.groupify.models.AppData
 import org.json.JSONObject
 
@@ -193,27 +194,24 @@ class LauncherActivity : AppCompatActivity() {
     private fun showFolderDialog(predictedColor: String, appList: List<AppData>) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.activity_folder_launcher_folderview, null)
         val folderTitle: TextView = dialogView.findViewById(R.id.folderTitle)
-        val gridLayout: GridLayout = dialogView.findViewById(R.id.gridLayout)
+        val viewPager: ViewPager2 = dialogView.findViewById(R.id.viewPager)
 
         folderTitle.text = predictedColor // 폴더 이름 설정
 
-        // 3x3 형태로 그리드 아이템 추가
-        gridLayout.columnCount = 3
-        gridLayout.rowCount = (appList.size / 3) + if (appList.size % 3 == 0) 0 else 1
+        // 앱 목록을 최대 9개씩 나누어 페이지네이션을 만들기 위해 9개씩 그룹화
+        val paginatedAppList = appList.chunked(9)
 
-        appList.forEachIndexed { index, app ->
-            val appLayout = createAppLayout(app)
-            val params = GridLayout.LayoutParams()
-            params.rowSpec = GridLayout.spec(index / 3)
-            params.columnSpec = GridLayout.spec(index % 3)
-            appLayout.layoutParams = params
-            gridLayout.addView(appLayout)
-        }
+        // ViewPager2에 어댑터 설정
+        val adapter = AppPagerAdapter(paginatedAppList)
+        viewPager.adapter = adapter
+
 
         val dialog = AlertDialog.Builder(this)
             .setView(dialogView)
-            .setNegativeButton("Close", null)
             .create()
+
+        // 다이얼로그 배경을 투명으로 설정
+        dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         dialog.show()
     }
