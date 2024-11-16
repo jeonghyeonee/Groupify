@@ -38,6 +38,8 @@ class LauncherActivity : AppCompatActivity() {
     private lateinit var browserButton: ImageView
     private lateinit var cameraButton: ImageView
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launcher)
@@ -51,7 +53,7 @@ class LauncherActivity : AppCompatActivity() {
 
         // RecyclerView 설정
         folderRecyclerView = findViewById(R.id.folderRecyclerView)
-        folderRecyclerView.layoutManager = GridLayoutManager(this, 3) // 3개의 폴더를 한 줄에 배치
+        folderRecyclerView.layoutManager = GridLayoutManager(this, 4) // 3개의 폴더를 한 줄에 배치
 
 
         val wallpaperManager = WallpaperManager.getInstance(this)
@@ -86,10 +88,10 @@ class LauncherActivity : AppCompatActivity() {
         cameraButton = findViewById(R.id.cameraButton)
 
         // 각 앱의 패키지명으로 아이콘 설정
-        callButton.setImageDrawable(getAppIcon("com.android.contacts"))
-        messageButton.setImageDrawable(getAppIcon("com.android.messaging"))
-        browserButton.setImageDrawable(getAppIcon("com.android.browser"))
-        cameraButton.setImageDrawable(getAppIcon("com.android.camera"))
+        callButton.setImageDrawable(getAppIcon("com.samsung.android.app.contacts"))
+        messageButton.setImageDrawable(getAppIcon("com.samsung.android.messaging"))
+        browserButton.setImageDrawable(getAppIcon("com.sec.android.app.sbrowser"))
+        cameraButton.setImageDrawable(getAppIcon("com.sec.android.app.camera"))
 
         // 전화 버튼 클릭 시
         callButton.setOnClickListener {
@@ -126,6 +128,12 @@ class LauncherActivity : AppCompatActivity() {
         val itemTouchHelper = ItemTouchHelper(FolderItemTouchHelperCallback(folderAdapter))
         itemTouchHelper.attachToRecyclerView(folderRecyclerView)
     }
+
+    // 뒤로가기 버튼 비활성화 (홈 화면처럼 동작)
+    override fun onBackPressed() {
+        // 아무 작업도 하지 않음 (홈 화면처럼)
+    }
+
 
 
     private fun displayFolders(responseData: String, isNameMode: Boolean, isFruitMode: Boolean) {
