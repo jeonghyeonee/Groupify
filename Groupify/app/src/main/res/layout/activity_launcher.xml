@@ -25,38 +25,38 @@
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:orientation="horizontal"
-        android:gravity="center"
+        android:layout_alignParentBottom="true"
         android:background="@color/white"
         android:elevation="4dp"
-        android:layout_alignParentBottom="true">
+        android:gravity="center"
+        android:orientation="horizontal">
 
+        <!-- 연락처 아이콘 -->
         <ImageView
             android:id="@+id/callButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_call"
             android:contentDescription="전화" />
 
+        <!-- 메시지 아이콘 -->
         <ImageView
             android:id="@+id/messageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_send"
             android:contentDescription="메시지" />
 
+        <!-- 브라우저 아이콘 -->
         <ImageView
             android:id="@+id/browserButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_view"
             android:contentDescription="브라우저" />
 
+        <!-- 카메라 아이콘 -->
         <ImageView
             android:id="@+id/cameraButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_camera"
             android:contentDescription="카메라" />
 
     </LinearLayout>

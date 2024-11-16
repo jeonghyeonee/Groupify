@@ -19,6 +19,16 @@ class FolderAdapter(
     private val onFolderClick: (String, List<AppData>) -> Unit // 폴더 클릭 시 호출될 콜백
 ) : RecyclerView.Adapter<FolderAdapter.FolderViewHolder>() {
 
+
+    fun onItemMove(fromPosition: Int, toPosition: Int) {
+        val key = folderMap.keys.elementAt(fromPosition)
+        val itemList = folderMap[key]
+        val movedItem = itemList?.removeAt(fromPosition)
+        itemList?.add(toPosition, movedItem!!)
+
+        notifyItemMoved(fromPosition, toPosition)
+    }
+
     fun updateFolderNames(isNameMode: Boolean, isFruitMode: Boolean) {
         this.isNameMode = isNameMode
         this.isFruitMode = isFruitMode

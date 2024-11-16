@@ -1,5 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="8dp">
@@ -13,11 +13,11 @@
         <!-- 폴더 배경 (둥근 모서리 불투명한 사각형) -->
         <View
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:layout_gravity="center"
-            android:background="@drawable/rounded_folder" /> <!-- drawable에 정의된 둥근 배경 사용 -->
+            android:background="@drawable/rounded_folder" />
 
-        <!-- 폴더 아이콘 3x3 그리드가 채워질 부분은 자바 코드에서 동적으로 처리합니다 -->
+        <!-- 폴더 아이콘 그리드 (9개의 칸 고정) -->
         <GridLayout
             android:id="@+id/folderPreviewGrid"
             android:layout_width="match_parent"
@@ -25,7 +25,8 @@
             android:columnCount="3"
             android:rowCount="3"
             android:orientation="horizontal"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"/>
     </FrameLayout>
 
     <!-- 폴더 이름 -->

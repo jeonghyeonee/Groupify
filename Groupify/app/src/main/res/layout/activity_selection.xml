@@ -8,7 +8,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="How would you like us to organizae it?"
+        android:text="How would you like to organize it?"
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="#4b5ae4"

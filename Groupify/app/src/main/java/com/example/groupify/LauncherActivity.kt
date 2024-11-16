@@ -5,8 +5,11 @@ import android.content.ClipData
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.provider.MediaStore
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.groupify.models.AppData
 import org.json.JSONObject
@@ -28,6 +32,10 @@ class LauncherActivity : AppCompatActivity() {
 
     private lateinit var folderRecyclerView: RecyclerView
     private lateinit var folderAdapter: FolderAdapter
+    private lateinit var callButton: ImageView
+    private lateinit var messageButton: ImageView
+    private lateinit var browserButton: ImageView
+    private lateinit var cameraButton: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,12 +76,54 @@ class LauncherActivity : AppCompatActivity() {
 //            true
 //        }
 
+        //하단바 클릭시
+
+        // 하단바 버튼 초기화
+        callButton = findViewById(R.id.callButton)
+        messageButton = findViewById(R.id.messageButton)
+        browserButton = findViewById(R.id.browserButton)
+        cameraButton = findViewById(R.id.cameraButton)
+
+        // 각 앱의 패키지명으로 아이콘 설정
+        callButton.setImageDrawable(getAppIcon("com.android.contacts"))
+        messageButton.setImageDrawable(getAppIcon("com.android.messaging"))
+        browserButton.setImageDrawable(getAppIcon("com.android.browser"))
+        cameraButton.setImageDrawable(getAppIcon("com.android.camera"))
+
+        // 전화 버튼 클릭 시
+        callButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)  // 전화 다이얼러 열기
+            startActivity(intent)
+        }
+
+        // 메시지 버튼 클릭 시
+        messageButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("sms:"))  // 메시지 앱 열기
+            startActivity(intent)
+        }
+
+        // 브라우저 버튼 클릭 시
+        browserButton.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com"))  // 브라우저 열기
+            startActivity(intent)
+        }
+
+        // 카메라 버튼 클릭 시
+        cameraButton.setOnClickListener {
+            val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)  // 카메라 열기
+            startActivity(intent)
+        }
+
 
 
         // 서버에서 받은 responseData를 파싱하여 폴더 생성
         responseData?.let {
             displayFolders(it, isNameMode, isFruitMode)
         }
+
+        // RecyclerView에 드래그 기능 추가
+        val itemTouchHelper = ItemTouchHelper(FolderItemTouchHelperCallback(folderAdapter))
+        itemTouchHelper.attachToRecyclerView(folderRecyclerView)
     }
 
 
@@ -245,4 +295,15 @@ class LauncherActivity : AppCompatActivity() {
             null
         }
     }
+
+    private fun getAppIcon(packageName: String): Drawable? {
+        return try {
+            val packageManager = packageManager
+            val applicationInfo = packageManager.getApplicationInfo(packageName, 0)
+            packageManager.getApplicationIcon(applicationInfo) // 앱 아이콘을 가져옴
+        } catch (e: PackageManager.NameNotFoundException) {
+            null // 예외 처리: 앱이 없을 경우 null 반환
+        }
+    }
+
 }

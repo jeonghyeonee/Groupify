@@ -52,14 +52,14 @@ class ColorClassify : AppCompatActivity() {
 
             if (clusterCount.isNotEmpty()) {
                 val kValue = clusterCount.toInt()
-                if (kValue in 4..10) {
+                if (kValue in 4..12) {
                     // 유효한 값일 경우 메시지 표시
                     feedbackText.visibility = View.VISIBLE
-                    feedbackText.text = "Great! We will categorize it into $kValue folders \uD83D\uDE04"
+                    feedbackText.text = "Great! \n We will categorize it into $kValue folders \uD83D\uDE04"
                     sendDataToServer(kValue, deviceId)
                 } else {
                     // 유효하지 않은 값일 경우 경고 모달 표시
-                    showAlert("Please enter a number between 4 and 10 !")
+                    showAlert("Please enter a number between 4 and 12 !")
                 }
             } else {
                 Toast.makeText(this, "Please enter the number of clusters.", Toast.LENGTH_SHORT).show()
