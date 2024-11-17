@@ -18,8 +18,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/welcome_message_1"
-            android:textSize="18sp"
-            android:textColor="#000000" />
+            android:textSize="20sp"
+            android:textColor="#000000"
+            android:textStyle="bold"/>
 
         <!-- 두 번째 강조 텍스트 -->
         <TextView
