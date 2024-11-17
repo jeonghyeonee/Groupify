@@ -1,38 +1,41 @@
-<!-- res/layout/item_folder.xml -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="100dp"
-    android:layout_height="100dp"
-    android:background="@drawable/ic_folder_background"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:padding="8dp">
 
-    <!-- 첫 번째 앱 아이콘 미리보기 -->
-    <ImageView
-        android:id="@+id/folderPreview1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:scaleType="centerInside"
-        android:visibility="gone"/>
+    <!-- FrameLayout을 사용하여 배경과 아이콘들을 겹쳐서 배치 -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
-    <!-- 두 번째 앱 아이콘 미리보기 -->
-    <ImageView
-        android:id="@+id/folderPreview2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:scaleType="centerInside"
-        android:visibility="gone"/>
+        <!-- 폴더 배경 (둥근 모서리 불투명한 사각형) -->
+        <View
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_folder" />
 
-    <!-- 폴더 이름을 표시하는 TextView -->
+        <!-- 폴더 아이콘 그리드 (9개의 칸 고정) -->
+        <GridLayout
+            android:id="@+id/folderPreviewGrid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnCount="3"
+            android:rowCount="3"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"/>
+    </FrameLayout>
+
+    <!-- 폴더 이름 -->
     <TextView
         android:id="@+id/folderLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:text="Folder"
+        android:gravity="center"
+        android:textSize="12sp"
         android:textColor="@android:color/black"
-        android:textSize="12sp" />
-</RelativeLayout>
+        android:layout_gravity="center" />
+</LinearLayout>

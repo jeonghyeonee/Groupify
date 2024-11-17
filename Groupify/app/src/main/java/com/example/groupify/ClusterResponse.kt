@@ -4,5 +4,3 @@ package com.example.groupify
 data class ClusterResponse(
     val clusters: Map<String, ClusterData>
 )
-
-

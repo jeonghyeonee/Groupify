@@ -1,5 +1,7 @@
 package com.example.groupify
 
+
+
 import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
@@ -90,7 +92,7 @@ class SelectionActivity : AppCompatActivity() {
 
         buttonProceed.setOnClickListener {
             val intent = when (selectedOption) {
-                "function" -> Intent(this, FunctionActivity::class.java)
+                //"function" -> Intent(this, FunctionActivity::class.java)
                 "color" -> Intent(this, ColorClassify::class.java)
                 else -> null
             }
@@ -224,7 +226,7 @@ class SelectionActivity : AppCompatActivity() {
 
     private fun updateSyncStatus() {
         syncIcon.setImageResource(R.drawable.check_icon_selected) // 업데이트 성공 시 아이콘 변경
-        syncText.text = "업데이트 되었어요" // 업데이트 성공 시 텍스트 변경
+        syncText.text = "Update Success !" // 업데이트 성공 시 텍스트 변경
         syncText.setTextColor(Color.parseColor("#4b5ae4")) // 텍스트 색상 변경
         isSynced = true // 업데이트 성공 상태로 변경
     }

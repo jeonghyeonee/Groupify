@@ -6,6 +6,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("com.google.gms.google-services")
     id("kotlin-kapt")  // kapt 플러그인 추가
+
 }
 
 android {
@@ -81,6 +82,7 @@ dependencies {
 
     // 이미지 로딩 및 Glide
     implementation("com.github.bumptech.glide:glide:4.12.0")
+    implementation("com.google.androidbrowserhelper:androidbrowserhelper:2.5.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
 
     // AndroidX 및 기타 라이브러리
@@ -88,7 +90,10 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation ("androidx.gridlayout:gridlayout:1.0.0")
+
     implementation("androidx.palette:palette-ktx:1.0.0")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("org.jsoup:jsoup:1.13.1")
     implementation("com.android.volley:volley:1.2.1")
 

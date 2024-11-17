@@ -42,7 +42,7 @@ class WelcomeActivity : AppCompatActivity() {
         // 3초 후 버튼과 스크롤 애니메이션 동시에 시작
         Handler(Looper.getMainLooper()).postDelayed({
             joinNowButton.visibility = View.VISIBLE
-            val buttonAnimation = ObjectAnimator.ofFloat(joinNowButton, "translationY", 300f, 0f)
+            val buttonAnimation = ObjectAnimator.ofFloat(joinNowButton, "translationY", 200f, 0f)
             val scrollAnimation = ObjectAnimator.ofInt(scrollView, "scrollY", scrollView.bottom)
 
             buttonAnimation.duration = 1000
@@ -50,7 +50,7 @@ class WelcomeActivity : AppCompatActivity() {
 
             buttonAnimation.start()
             scrollAnimation.start()
-        }, 3000)
+        }, 2000)
 
         // Join Now 버튼 클릭 시 SelectionActivity로 이동
         joinNowButton.setOnClickListener {

@@ -5,19 +5,14 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <EditText
-        android:id="@+id/editTextCluster"
+    <!-- 3x3 그리드 레이아웃 -->
+    <GridLayout
+        android:id="@+id/gridLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="클러스터 개수를 입력하세요"
-        android:inputType="number"
-        android:textSize="18sp" />
-
-    <Button
-        android:id="@+id/buttonConfirm"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="확인"
-        android:textSize="18sp"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
         android:layout_marginTop="16dp" />
+
 </LinearLayout>

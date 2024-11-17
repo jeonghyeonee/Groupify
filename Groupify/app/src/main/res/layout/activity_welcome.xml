@@ -41,23 +41,23 @@
         <!-- Lottie 애니메이션 추가 -->
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/welcomeAnimation"
-            android:layout_width="wrap_content"
+            android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
-            app:lottie_rawRes="@raw/main_logo"/>
+            app:lottie_rawRes="@raw/welcome_animation2"/>
 
         <!-- Join Now 버튼 -->
         <Button
             android:id="@+id/joinNowButton"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
             android:layout_marginBottom="100dp"
             android:backgroundTint="#4b5ae4"
             android:background="@drawable/border_radius"
-            android:text="시작하기"
+            android:text="Get Started"
             android:textColor="#ffffff"
+            android:layout_marginTop="30dp"
             android:visibility="invisible" />
 
     </LinearLayout>

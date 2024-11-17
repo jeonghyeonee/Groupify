@@ -1,26 +1,68 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/mainLayout">
+    android:layout_height="match_parent">
 
-    <!-- GridLayout for folders -->
-    <GridLayout
-        android:id="@+id/gridLayout"
+    <!-- 배경을 위한 ImageView (맨 아래에 배치) -->
+    <ImageView
+        android:id="@+id/backgroundImageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true" />  <!-- 배경을 맨 아래로 고정 -->
+
+    <!-- 폴더를 표시할 RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/folderRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:columnCount="3"
-        android:padding="16dp"
-        android:orientation="horizontal" />
+        android:layout_above="@id/bottomBar"
+        android:layout_alignParentTop="true"
+        android:layout_margin="16dp" />
 
-    <!-- Dock layout -->
+    <!-- 하단 바 -->
     <LinearLayout
-        android:id="@+id/dockLayout"
+        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="86dp"
+        android:layout_alignParentBottom="true"
+        android:elevation="4dp"
+        android:gravity="center"
         android:orientation="horizontal"
-        android:gravity="center"/>
+        android:weightSum="4" >
 
-</LinearLayout>
+    <!-- 연락처 아이콘 -->
+    <ImageView
+        android:id="@+id/callButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:contentDescription="전화" />
+
+    <!-- 메시지 아이콘 -->
+    <ImageView
+        android:id="@+id/messageButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:contentDescription="메시지" />
+
+    <!-- 브라우저 아이콘 -->
+    <ImageView
+        android:id="@+id/browserButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:contentDescription="브라우저" />
+    <!-- 카메라 아이콘 -->
+    <ImageView
+        android:id="@+id/cameraButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:contentDescription="카메라" />
+
+    </LinearLayout>
+
+</RelativeLayout>
