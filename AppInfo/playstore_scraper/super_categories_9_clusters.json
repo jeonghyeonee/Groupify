@@ -1,0 +1,101 @@
+[
+    {
+        "Cluster": 0,
+        "Super Category": "instagram",
+        "Top Keywords": [
+            "instagram",
+            "share",
+            "meta",
+            "threads",
+            "https"
+        ]
+    },
+    {
+        "Cluster": 1,
+        "Super Category": "newest",
+        "Top Keywords": [
+            "chatgpt",
+            "newest",
+            "openai",
+            "recipe",
+            "personalized"
+        ]
+    },
+    {
+        "Cluster": 2,
+        "Super Category": "customer",
+        "Top Keywords": [
+            "webtoons",
+            "naver",
+            "customer",
+            "reading",
+            "information"
+        ]
+    },
+    {
+        "Cluster": 3,
+        "Super Category": "data",
+        "Top Keywords": [
+            "transfer",
+            "used",
+            "galaxy",
+            "data",
+            "devices"
+        ]
+    },
+    {
+        "Cluster": 4,
+        "Super Category": "pieces",
+        "Top Keywords": [
+            "weeknight",
+            "reality",
+            "recipes",
+            "pinterest",
+            "pieces"
+        ]
+    },
+    {
+        "Cluster": 5,
+        "Super Category": "browsing",
+        "Top Keywords": [
+            "chrome",
+            "samsung",
+            "used",
+            "browsing",
+            "health"
+        ]
+    },
+    {
+        "Cluster": 6,
+        "Super Category": "speak",
+        "Top Keywords": [
+            "speak",
+            "language",
+            "real",
+            "feedback",
+            "speaking"
+        ]
+    },
+    {
+        "Cluster": 7,
+        "Super Category": "calls",
+        "Top Keywords": [
+            "kakaotalk",
+            "voice",
+            "stickers",
+            "chats",
+            "calls"
+        ]
+    },
+    {
+        "Cluster": 8,
+        "Super Category": "google",
+        "Top Keywords": [
+            "google",
+            "gmail",
+            "meet",
+            "video",
+            "googleworkspace"
+        ]
+    }
+]

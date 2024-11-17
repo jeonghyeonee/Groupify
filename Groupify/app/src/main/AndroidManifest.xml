@@ -46,7 +46,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 
         <activity
-            android:name=".DeployActivity"
+            android:name=".FunctionActivity"
             android:exported="true" />
 
 
@@ -73,7 +73,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".FunctionActivity" android:exported="true" />
 
     </application>
 </manifest>

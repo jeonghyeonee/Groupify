@@ -1,0 +1,123 @@
+[
+    {
+        "Cluster": 0,
+        "Super Category": "newest",
+        "Top Keywords": [
+            "chatgpt",
+            "newest",
+            "openai",
+            "recipe",
+            "personalized"
+        ]
+    },
+    {
+        "Cluster": 1,
+        "Super Category": "pieces",
+        "Top Keywords": [
+            "weeknight",
+            "reality",
+            "recipes",
+            "pinterest",
+            "pieces"
+        ]
+    },
+    {
+        "Cluster": 2,
+        "Super Category": "community",
+        "Top Keywords": [
+            "instagram",
+            "threads",
+            "meta",
+            "https",
+            "community"
+        ]
+    },
+    {
+        "Cluster": 3,
+        "Super Category": "customer",
+        "Top Keywords": [
+            "webtoons",
+            "naver",
+            "customer",
+            "reading",
+            "information"
+        ]
+    },
+    {
+        "Cluster": 4,
+        "Super Category": "data",
+        "Top Keywords": [
+            "transfer",
+            "used",
+            "galaxy",
+            "data",
+            "devices"
+        ]
+    },
+    {
+        "Cluster": 5,
+        "Super Category": "speak",
+        "Top Keywords": [
+            "speak",
+            "language",
+            "real",
+            "feedback",
+            "speaking"
+        ]
+    },
+    {
+        "Cluster": 6,
+        "Super Category": "web",
+        "Top Keywords": [
+            "chrome",
+            "browsing",
+            "web",
+            "internet",
+            "webpages"
+        ]
+    },
+    {
+        "Cluster": 7,
+        "Super Category": "calls",
+        "Top Keywords": [
+            "kakaotalk",
+            "voice",
+            "stickers",
+            "chats",
+            "calls"
+        ]
+    },
+    {
+        "Cluster": 8,
+        "Super Category": "google",
+        "Top Keywords": [
+            "google",
+            "gmail",
+            "meet",
+            "video",
+            "googleworkspace"
+        ]
+    },
+    {
+        "Cluster": 9,
+        "Super Category": "galaxy",
+        "Top Keywords": [
+            "samsung",
+            "health",
+            "used",
+            "galaxy",
+            "exercise"
+        ]
+    },
+    {
+        "Cluster": 10,
+        "Super Category": "share",
+        "Top Keywords": [
+            "instagram",
+            "moments",
+            "share",
+            "discover",
+            "interests"
+        ]
+    }
+]

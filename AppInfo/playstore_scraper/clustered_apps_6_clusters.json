@@ -1,0 +1,2517 @@
+[
+    {
+        "app_name": "com.example.groupify",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.youtube",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.app.galaxyfinder",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.selabs.speak",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.interpark.mobile.ticket",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.microsoft.appmanager",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.googlequicksearchbox",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.calendar",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "air.kr.paikdabang.android.membership",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "kr.co.lottecinema.lcm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.sree",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.shinhan.sbanking",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.openai.chatgpt",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.sec.android.app.voicenote",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.yes24.commerce",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.email.provider",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.example.mp_teamproject",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.sec.android.app.samsungapps",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.kbstar.kbbank",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.game.gamehome",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.webtoon",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "mok.android",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.android.vending",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.microsoft.skydrive",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.microsoft.skydrive",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.microsoft.skydrive",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.microsoft.skydrive",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.microsoft.skydrive",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.microsoft.skydrive",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.microsoft.skydrive",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.microsoft.skydrive",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.microsoft.skydrive",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.samsung.android.privateshare",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.app.watchmanager",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.matin.android.atflee",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.example.selfintro",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.messaging",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.android",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.samsung.android.app.tips",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.skt.prod.dialer",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.pinterest",
+        "predicted_cluster": 4,
+        "cluster_name": "dream"
+    },
+    {
+        "app_name": "com.nhnent.payapp",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.gm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.bixby.agent",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.tachyon",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.coupang.mobile",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.sec.android.gallery3d",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.example.mp_assignment3",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.accessibility",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sktelecom.minit",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.instagram.barcelona",
+        "predicted_cluster": 0,
+        "cluster_name": "instagram"
+    },
+    {
+        "app_name": "com.dbs.kurly.m2",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.app.contacts",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.docs",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.maps",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "de.kai_morich.serial_bluetooth_terminal",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.sec.android.app.clockpackage",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.example.hw04_2",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.android.chrome",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "kr.co.ticketlink.cne",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.videos",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "viva.republica.toss",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.sec.android.app.myfiles",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sampleapp",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.google.android.apps.photos",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.arzone",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.authfw",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.sec.android.app.sbrowser",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.shcard.smartpay",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.microsoft.office.officehubrow",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.microsoft.office.officehubrow",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.microsoft.office.officehubrow",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.microsoft.office.officehubrow",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.microsoft.office.officehubrow",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.microsoft.office.officehubrow",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.microsoft.office.officehubrow",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.microsoft.office.officehubrow",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.microsoft.office.officehubrow",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.dialer",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.example.ch6",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.towneers.www",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "edu.mit.appinventor.aicompanion3",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.example.hw04",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.example.hw05",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.tms",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.oneconnect",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.example.midterm",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.sec.android.app.popupcalculator",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.samsung.android.voc",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.shealth",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.fstudio.kream",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "Com.sktelecom.minit",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.samsungpass",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.croquis.zigzag",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.android.settings",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.example.mp_hw06",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.lool",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.spay",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.app.notes",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "co.kr.catchtable.android.catchtable_app",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.example.selfointro",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kakao.talk",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.sec.android.easyMover",
+        "predicted_cluster": 2,
+        "cluster_name": "data"
+    },
+    {
+        "app_name": "com.example.thollererchangemaker",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.app.watchmanagerstub",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.kbcard.cxh.appcard",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.yupdduk.morder",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.nhn.android.search",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.banhala.android",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.shinhan.o2o",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.example.myapplication",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.example.myapplication_assignment2",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.samsung.android.app.dtv.dmb",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "world.mnetplus",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.android.traceur",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    },
+    {
+        "app_name": "com.skt.skaf.A000Z00040",
+        "predicted_cluster": 3,
+        "cluster_name": "voice"
+    },
+    {
+        "app_name": "com.sec.android.app.fm",
+        "predicted_cluster": 5,
+        "cluster_name": "galaxy"
+    },
+    {
+        "app_name": "com.sec.android.app.camera",
+        "predicted_cluster": 1,
+        "cluster_name": "browsing"
+    }
+]

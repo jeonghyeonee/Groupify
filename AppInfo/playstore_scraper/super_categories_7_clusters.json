@@ -1,0 +1,79 @@
+[
+    {
+        "Cluster": 0,
+        "Super Category": "instagram",
+        "Top Keywords": [
+            "instagram",
+            "share",
+            "meta",
+            "threads",
+            "https"
+        ]
+    },
+    {
+        "Cluster": 1,
+        "Super Category": "customer",
+        "Top Keywords": [
+            "webtoons",
+            "naver",
+            "customer",
+            "reading",
+            "information"
+        ]
+    },
+    {
+        "Cluster": 2,
+        "Super Category": "data",
+        "Top Keywords": [
+            "used",
+            "galaxy",
+            "transfer",
+            "data",
+            "devices"
+        ]
+    },
+    {
+        "Cluster": 3,
+        "Super Category": "voice",
+        "Top Keywords": [
+            "chatgpt",
+            "voice",
+            "kakaotalk",
+            "recipe",
+            "openai"
+        ]
+    },
+    {
+        "Cluster": 4,
+        "Super Category": "gmail",
+        "Top Keywords": [
+            "google",
+            "chrome",
+            "gmail",
+            "meet",
+            "android"
+        ]
+    },
+    {
+        "Cluster": 5,
+        "Super Category": "speak",
+        "Top Keywords": [
+            "speak",
+            "language",
+            "real",
+            "feedback",
+            "speaking"
+        ]
+    },
+    {
+        "Cluster": 6,
+        "Super Category": "pieces",
+        "Top Keywords": [
+            "weeknight",
+            "reality",
+            "recipes",
+            "pinterest",
+            "pieces"
+        ]
+    }
+]

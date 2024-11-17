@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageButton
+        android:id="@+id/backButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/ic_back_arrow2"   />
+
+    <!-- 안내 텍스트 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How many folders would you like to categorize the apps into?"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#000000"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/backButton"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="* The number of folders may be fewer than expected \n based on the distribution and number of installed apps"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:textColor="#747474"
+        android:layout_marginTop="30dp" />
+
+    <!-- 클러스터 입력 EditText -->
+    <EditText
+        android:id="@+id/editFunctionTextCluster"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Choose between 4 and 10 folders"
+        android:inputType="number"
+        android:textSize="18sp"
+        android:layout_marginTop="50dp"/>
+
+    <!-- 올바른 입력 시 표시할 피드백 TextView -->
+    <TextView
+        android:id="@+id/feedbackFunctionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#4b5ae4"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:layout_marginTop="70dp"/> <!-- 기본적으로 숨김 상태 -->
+
+    <!-- 확인 버튼 -->
+    <Button
+        android:id="@+id/buttonFunctionConfirm"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:backgroundTint="#4b5ae4"
+        android:background="@drawable/border_radius"
+        android:text="View Results  >"
+        android:textSize="18sp"
+        android:textColor="#ffffff"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>

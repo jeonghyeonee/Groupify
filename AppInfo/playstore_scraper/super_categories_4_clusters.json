@@ -1,0 +1,46 @@
+[
+    {
+        "Cluster": 0,
+        "Super Category": "meta",
+        "Top Keywords": [
+            "instagram",
+            "health",
+            "share",
+            "meta",
+            "threads"
+        ]
+    },
+    {
+        "Cluster": 1,
+        "Super Category": "chrome",
+        "Top Keywords": [
+            "webtoons",
+            "naver",
+            "chrome",
+            "search",
+            "reading"
+        ]
+    },
+    {
+        "Cluster": 2,
+        "Super Category": "voice",
+        "Top Keywords": [
+            "chatgpt",
+            "speak",
+            "google",
+            "voice",
+            "kakaotalk"
+        ]
+    },
+    {
+        "Cluster": 3,
+        "Super Category": "data",
+        "Top Keywords": [
+            "transfer",
+            "used",
+            "galaxy",
+            "data",
+            "devices"
+        ]
+    }
+]

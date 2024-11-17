@@ -78,7 +78,7 @@ class ColorClassify : AppCompatActivity() {
 
     // 서버로 k값과 deviceID 전송
     private fun sendDataToServer(kValue: Int, deviceId: String) {
-        val url = "http://ec2-13-125-56-70.ap-northeast-2.compute.amazonaws.com:8080/cluster"
+        val url = "http://ec2-13-125-56-70.ap-northeast-2.compute.amazonaws.com:5000/cluster"
         val jsonBody = JSONObject().apply {
             put("k_value", kValue)
             put("device_id", deviceId)

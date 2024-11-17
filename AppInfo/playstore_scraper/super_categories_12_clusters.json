@@ -1,0 +1,134 @@
+[
+    {
+        "Cluster": 0,
+        "Super Category": "instagram",
+        "Top Keywords": [
+            "instagram",
+            "share",
+            "meta",
+            "threads",
+            "https"
+        ]
+    },
+    {
+        "Cluster": 1,
+        "Super Category": "information",
+        "Top Keywords": [
+            "naver",
+            "information",
+            "search",
+            "weather",
+            "form"
+        ]
+    },
+    {
+        "Cluster": 2,
+        "Super Category": "data",
+        "Top Keywords": [
+            "transfer",
+            "used",
+            "galaxy",
+            "data",
+            "devices"
+        ]
+    },
+    {
+        "Cluster": 3,
+        "Super Category": "google",
+        "Top Keywords": [
+            "google",
+            "gmail",
+            "meet",
+            "video",
+            "googleworkspace"
+        ]
+    },
+    {
+        "Cluster": 4,
+        "Super Category": "newest",
+        "Top Keywords": [
+            "chatgpt",
+            "newest",
+            "openai",
+            "recipe",
+            "personalized"
+        ]
+    },
+    {
+        "Cluster": 5,
+        "Super Category": "customer",
+        "Top Keywords": [
+            "webtoons",
+            "naver",
+            "reading",
+            "customer",
+            "center"
+        ]
+    },
+    {
+        "Cluster": 6,
+        "Super Category": "pieces",
+        "Top Keywords": [
+            "weeknight",
+            "reality",
+            "recipes",
+            "pinterest",
+            "pieces"
+        ]
+    },
+    {
+        "Cluster": 7,
+        "Super Category": "internet",
+        "Top Keywords": [
+            "internet",
+            "webpage",
+            "android",
+            "provide",
+            "browsing"
+        ]
+    },
+    {
+        "Cluster": 8,
+        "Super Category": "speak",
+        "Top Keywords": [
+            "speak",
+            "language",
+            "real",
+            "feedback",
+            "speaking"
+        ]
+    },
+    {
+        "Cluster": 9,
+        "Super Category": "galaxy",
+        "Top Keywords": [
+            "samsung",
+            "health",
+            "used",
+            "galaxy",
+            "exercise"
+        ]
+    },
+    {
+        "Cluster": 10,
+        "Super Category": "web",
+        "Top Keywords": [
+            "chrome",
+            "google",
+            "web",
+            "tap",
+            "browse"
+        ]
+    },
+    {
+        "Cluster": 11,
+        "Super Category": "calls",
+        "Top Keywords": [
+            "kakaotalk",
+            "voice",
+            "stickers",
+            "chats",
+            "calls"
+        ]
+    }
+]
