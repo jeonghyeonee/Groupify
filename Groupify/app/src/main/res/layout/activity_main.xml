@@ -4,26 +4,17 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/lottieAnimationView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/main_logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <ImageView
-        android:id="@+id/logoImage"
+        android:id="@+id/logoImage2"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/groupify_logo"
+        android:src="@drawable/groupify_logo_main"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="420dp"
-        android:visibility="invisible" /> <!-- 처음에는 보이지 않도록 설정 -->
+        android:layout_marginTop="120dp"
+        android:visibility="invisible" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
